@@ -1,0 +1,27 @@
+.parent{
+    background-color: #F5F5F5;
+    height: 80px;
+    display: flex;
+    .lowerNavBar{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .left{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 7vw;
+            justify-content: space-between;
+            .menu{
+                display: flex;
+                align-items: center;
+                gap: 2vw;
+            }
+        }
+        .right{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

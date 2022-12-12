@@ -1,5 +1,5 @@
 .upperNav{
-    display: flex;
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
     color: white;
@@ -9,13 +9,11 @@
         align-items: center;
         .language{
             display: flex;
-            color: white;
             gap: 0.1rem;
             align-items: center;
         }
         .currency{
             display: flex;
-            color: white;
             gap: 0.1rem;
             align-items: center;
         }
