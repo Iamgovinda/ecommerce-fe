@@ -1,0 +1,46 @@
+.upperNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    .right{
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        .language{
+            display: flex;
+            color: white;
+            gap: 0.1rem;
+            align-items: center;
+        }
+        .currency{
+            display: flex;
+            color: white;
+            gap: 0.1rem;
+            align-items: center;
+        }
+    }
+    .left{
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        .email{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .phone{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+
+}
+
+
+.parent{
+    background-color: #7E33E0;
+    height: 44px;
+}
