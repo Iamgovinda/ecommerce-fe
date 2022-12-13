@@ -1,0 +1,38 @@
+.parent {
+  display: flex;
+  flex-direction: column;
+  height: 270px;
+  height: 360px;
+  .top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+    height: 270px;
+    width: 360px;
+  }
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffff;
+    .bottom_right {
+      display: flex;
+      gap: 10px;
+      .initial {
+        font-family: "Josefin Sans";
+        font-size: 12px;
+
+        color: #fb2448;
+      }
+
+      .current {
+        font-family: "Josefin Sans";
+        font-size: 14px;
+
+        /* Text */
+
+        color: #151875;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.parent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 0px 25px  rgba(0, 0, 0, 0.1);
+    .top{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #F6F7FB;
+        height: 236px;
+        width: 270px;
+    }
+    .bottom{
+        background-color: #FFFFFF;
+        height: 125px;
+    }
+}
