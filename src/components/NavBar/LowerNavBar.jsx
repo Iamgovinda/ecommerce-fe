@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Container } from '@mui/system';
 import style from "./LowerNavBar.module.scss";
 import logo from '../../assets/Nav/logo.png';
+import SearchBar from '../SearchBar/SearchBar';
 export default function LowerNavBar() {
   return (
     <div className={style["parent"]}>
@@ -20,7 +21,7 @@ export default function LowerNavBar() {
             </div>
         </div>
         <div className={style["right"]}>
-            SearchBar
+            <SearchBar />
         </div>
     </Container>
     </div>

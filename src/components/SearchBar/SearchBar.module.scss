@@ -1,4 +1,17 @@
 .parent{
     display: flex;
     gap: 0;
+    .btn{
+        background-color: #FB2E86;
+        border-radius: 0;
+        height: 39px;
+        width: 51px;
+    }
+    .txt{
+        color: white;
+        border: 2px solid #E7E6EF;
+        height: 40px;
+        width: 266px;
+        color: black;
+    }
 }
