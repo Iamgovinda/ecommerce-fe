@@ -1,0 +1,47 @@
+.footer {
+  background-color: #eeeffb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+  margin-top: 3rem;
+}
+
+.info {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #8a8fb9;
+}
+
+.catagories {
+  font-family: "Josefin Sans";
+  font-size: 22px;
+  line-height: 26px;
+
+  color: #000000;
+}
+
+.catagory {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #8a8fb9;
+}
+
+.customer-care{
+    @extend .catagories;
+}
+.customer-care-item{
+    @extend .catagory;
+}
+.pages{
+    @extend .catagories;
+}
+.page{
+    @extend .catagory;
+}

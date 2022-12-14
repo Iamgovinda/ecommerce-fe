@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import Item from './Item';
+import Item from './CItem';
 import styles from './Carousel.module.scss';
 
 
@@ -18,7 +18,6 @@ const MyCarousel = () => {
             name: "Random Name #1",
             description: "Probably the most random thing you have ever seen!"
         }
-
     ]
 
     return (
