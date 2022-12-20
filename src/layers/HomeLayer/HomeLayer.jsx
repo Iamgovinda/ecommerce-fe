@@ -19,6 +19,7 @@ import DiscountLayer from '../DiscountLayer/DiscountLayer';
 import TopProductLayer from '../TopProductLayer/TopProductLayer';
 import BlogCard from '../../components/BlogCard/BlogCard';
 import BlogImage from '../../assets/BlogCard/Blog.png';
+import { Grid } from '@mui/material';
 
 const HomeLayer = () => {
   const latest_products = [
@@ -105,13 +106,13 @@ const HomeLayer = () => {
     <>
       {/* <UpperNavBar />
       <LowerNavBar /> */}
-      <MyCarousel />
-      {/*       <Container>
-        <div className={styles['featured_section']}>
+      {/* <MyCarousel /> */}
+      <Container>
+        {/* <div className={styles['featured_section']}>
           <p className={styles['featured_text']}>Featured Product</p>
           <div><FeaturedProductLayer /></div>
-        </div>
-        <div className={styles['latest_product_section']}>
+        </div> */}
+        {/* <div className={styles['latest_product_section']}>
           <p className={styles['latest_product_text']}>Latest Product</p>
           <div className={styles['latest_parent']}>
             {
@@ -128,25 +129,28 @@ const HomeLayer = () => {
               })
             }
           </div>
-        </div>
+        </div> */}
       </Container>
 
       <div className={styles["offer_section"]}>
         <p className={styles["offer_text"]}>What Shopex Offer!</p>
-        <div className={styles["offer_parent"]}>
+        <Grid container>
           {
             offers.map((item, index) => {
               return (
-                <OfferCard
-                  image={item.image}
-                  description={item.description}
-                  key={index}
-                />
+                <Grid item key={item} xs={1} md={2} lg={3}>
+                  <OfferCard
+                    image={item.image}
+                    description={item.description}
+                    key={index}
+                  />
+                </Grid>
               )
             })
           }
-        </div>
+        </Grid>
       </div>
+      {/*   
       <ProductFeatureCard />
       <div className={styles['trending_product_section']}>
         <p className={styles['trending_product']}>Trending Products</p>

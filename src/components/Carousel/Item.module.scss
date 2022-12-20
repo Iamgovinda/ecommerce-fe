@@ -9,6 +9,11 @@
       flex-direction: row;
     }
     .info {
+      .shop_now_btn {
+        background-color: #fb2e86;
+        width: 10.1rem;
+        height: 3rem;
+      }
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -37,14 +42,13 @@
   .right {
     display: flex;
     align-items: center;
-    height: 764px;
     .backgroundImage {
       position: relative;
-      height: 651px;
+      height: 40.5rem;
     }
     .chair {
       position: absolute;
-      height: 620px;
+      height: 38.75rem;
       margin: -2rem;
     }
     .discountBoard {
@@ -57,11 +61,10 @@
       height: 74px;
       left: 1640.39px;
       top: 338px;
-
       font-family: "Josefin Sans";
       font-size: 35px;
       line-height: 44px;
-      margin: -12rem -2.5rem;
+      margin: -16rem -2.5rem;
       color: white;
     }
   }
@@ -69,5 +72,113 @@
   .bulb_img {
     height: 387px;
     width: 387px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .parent {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .left {
+      gap: 0;
+      .info {
+        .shop_now_btn {
+          background-color: #fb2e86;
+          width: 7.1rem;
+          height: 2rem;
+          font-size: 0.9rem;
+        }
+        .top_info {
+          font-size: 2vw;
+        }
+        .mid_info {
+          font-size: 2vw;
+        }
+        .bottom_info {
+          font-size: 2vw;
+        }
+      }
+    }
+    .right {
+      align-items: center;
+      justify-content: space-around;
+      .backgroundImage {
+        height: 25rem;
+        width: auto;
+      }
+      .chair {
+        height: 22rem;
+        width: auto;
+      }
+      .discountBoard {
+        position: absolute;
+        margin: 0 0 17rem 20rem;
+        height: 6rem;
+      }
+      .discount {
+        left: 33.3rem;
+        top: 34rem;
+        font-family: "Josefin Sans";
+        font-size: 23px;
+        line-height: 44px;
+        margin: -16rem -2.5rem;
+      }
+    }
+    .bulb_img {
+      height: 250px;
+      width: auto;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .parent {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .left {
+      gap: 0;
+      .info {
+        .shop_now_btn {
+          background-color: #fb2e86;
+          width: 7.1rem;
+          height: 2rem;
+          font-size: 0.9rem;
+        }
+        .top_info {
+          font-size: 2vw;
+        }
+        .mid_info {
+          font-size: 2vw;
+        }
+        .bottom_info {
+          font-size: 2vw;
+        }
+      }
+    }
+    .right {
+      align-items: center;
+      justify-content: space-around;
+      .backgroundImage {
+        height: 25rem;
+        width: auto;
+      }
+      .chair {
+        height: 22rem;
+        width: auto;
+      }
+      .discountBoard {
+        position: absolute;
+        margin: 0 0 17rem 20rem;
+        height: 6rem;
+      }
+      .discount {
+        height: auto;
+        width: auto;
+      }
+    }
+    .bulb_img {
+      height: 250px;
+      width: auto;
+    }
   }
 }
