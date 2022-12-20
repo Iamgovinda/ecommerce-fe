@@ -1,9 +1,7 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import Item from './CItem';
-import styles from './Carousel.module.scss';
-
-const MyCarousel = () => {
+import TopProduct from './TopProduct';
+const TopProductLayer = () => {
     var items = [
         {
             name: "Random Name #1",
@@ -20,12 +18,12 @@ const MyCarousel = () => {
     ]
 
     return (
-        <Carousel className={styles['parent']} autoPlay={true}>
+        <Carousel  autoPlay={true}>
             {
-                items.map((item, i) => <Item key={i} item={item} />)
+                items.map((item, i) => <TopProduct key={i} item={item} />)
             }
         </Carousel>
     )
 }
 
-export default MyCarousel
+export default TopProductLayer

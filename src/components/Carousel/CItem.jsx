@@ -6,6 +6,7 @@ import backgroundImage from '../../assets/Carousel/back.png';
 import discountBoard from '../../assets/Carousel/discount.png';
 import { Button } from '@mui/material';
 
+
 const Item = (props) => {
     return (
         <div className={styles['parent']}>

@@ -40,14 +40,29 @@
   .offer_text {
     @extend .base;
   }
-  .offer_parent{
+  .offer_parent {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
   }
 
+  .text-1{
+    
+  }
+
+  
 }
 
+.trending_product_section {
+  text-align: center;
+  .trending_product{
+    @extend .base;
+  }
+}
+.blog_parent{
+  display: flex;
+  gap: 1.5rem;
+}
 @media screen and (max-width: 700px) {
   .latest_product_section {
     display: block;

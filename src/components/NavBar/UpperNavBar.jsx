@@ -7,9 +7,11 @@ import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+// import MenuIcon from '@mui/icons-material/Menu';
+
 const UpperNavBar = () => {
   const [language, setLanguage] = React.useState('English');
   const [currency, setCurrency] = React.useState('USD');
@@ -20,7 +22,7 @@ const UpperNavBar = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClickForCurrency = (event)=>{
+  const handleClickForCurrency = (event) => {
     setAnchorElForCurrency(event.currentTarget);
   }
   const handleClose = (language) => {
@@ -31,6 +33,7 @@ const UpperNavBar = () => {
     setAnchorElForCurrency(null);
     setCurrency(currency);
   };
+  // const menuItems = ['Login', 'Cart', 'WishList']
   return (
     <div className={styles["parent"]}>
       <Container className={styles["upperNav"]}>
@@ -47,69 +50,65 @@ const UpperNavBar = () => {
         </div>
 
         <div className={styles["right"]}>
-          <div className={styles['language']}>
-            <p>{language}</p>
-            <Button
+            <div
+              className={styles['language']}
               id="language-button"
               aria-controls={open ? 'basic-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}
-              style={{margin:0, width:0, padding:0}}
             >
-              <ArrowDropDownOutlinedIcon style={{color:'white'}} fontSize='medium'/>
+              {language}
+              <ArrowDropDownOutlinedIcon style={{ color: 'white' }} fontSize='medium' />
 
-            </Button>
+            </div>
             <Menu
               id="language-menu"
               anchorEl={anchorEl}
               open={open}
-              onClose={()=>handleClose(language)}
+              onClose={() => handleClose(language)}
               MenuListProps={{
                 'aria-labelledby': 'language-button',
               }}
             >
-              <MenuItem onClick={()=>handleClose("English")} >English</MenuItem>
-              <MenuItem onClick={()=>handleClose("Nepali")} >Nepali</MenuItem>
-              <MenuItem onClick={()=>handleClose("Spanish")} >Spanish</MenuItem>
+              <MenuItem onClick={() => handleClose("English")} >English</MenuItem>
+              <MenuItem onClick={() => handleClose("Nepali")} >Nepali</MenuItem>
+              <MenuItem onClick={() => handleClose("Spanish")} >Spanish</MenuItem>
             </Menu>
-          </div>
-          <div className={styles['currency']}>
-            <p>{currency}</p>
-            <Button
+            <div
+              className={styles['currency']}
               id="currency-button"
               aria-controls={open ? 'language-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClickForCurrency}
-              style={{margin:0, width:0, padding:0}}
             >
-              <ArrowDropDownOutlinedIcon style={{color:'white'}} fontSize='medium'/>
-
-            </Button>
+              {currency}
+              <ArrowDropDownOutlinedIcon style={{ color: 'white' }} fontSize='medium' />
+            </div>
             <Menu
               id="currency-menu"
               anchorEl={anchorElForCurrency}
               open={openForCurrency}
-              onClose={()=>handleCloseForCurrency(currency)}
+              onClose={() => handleCloseForCurrency(currency)}
               MenuListProps={{
                 'aria-labelledby': 'currency-button',
               }}
             >
-              <MenuItem onClick={()=>handleCloseForCurrency("USD")} >USD</MenuItem>
-              <MenuItem onClick={()=>handleCloseForCurrency("NPR")} >NPR</MenuItem>
-              <MenuItem onClick={()=>handleCloseForCurrency("INR")} >INR</MenuItem>
+              <MenuItem onClick={() => handleCloseForCurrency("USD")} >USD</MenuItem>
+              <MenuItem onClick={() => handleCloseForCurrency("NPR")} >NPR</MenuItem>
+              <MenuItem onClick={() => handleCloseForCurrency("INR")} >INR</MenuItem>
             </Menu>
-          </div>
-          <div className={styles['currency']}>
+          <div className={styles['login']}>
             <p>Login</p>
             <PersonOutlineOutlinedIcon />
           </div>
-          <div className={styles['currency']}>
+          <div className={styles['wishlist']}>
             <p>Wishlist</p>
             <FavoriteBorderOutlinedIcon fontSize="md" />
+            <ShoppingCartOutlinedIcon style={{ marginLeft: "10px" }} className={styles["shopping_cart"]} />
+
           </div>
-          <ShoppingCartOutlinedIcon style={{ marginLeft: "10px" }} />
         </div>
 
       </Container>

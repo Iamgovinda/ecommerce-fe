@@ -4,8 +4,8 @@
     .btn{
         background-color: #FB2E86;
         border-radius: 0;
-        height: 39px;
-        width: 51px;
+        height: 2.4rem;
+        width: 3.1rem;
     }
     .txt{
         color: white;
@@ -13,5 +13,28 @@
         height: 40px;
         width: 266px;
         color: black;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .parent{
+        .btn{
+            height: auto;
+            width: 1rem;
+        }
+        .txt{
+            width: 12rem;
+
+        }
+
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+    .parent{
+        .txt{
+            width: 8rem;
+        }
     }
 }

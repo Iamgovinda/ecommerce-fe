@@ -13,7 +13,13 @@ import fourthOfferImage from '../../assets/OfferCard/offer4.png';
 import latest_product from '../../assets/ProductCard/latest_product.png';
 import FeaturedProductLayer from '../FeaturedProductLayer/FeaturedProductLayer';
 import FooterLayer from '../../components/Footer/FooterLayer';
-import ProductFeatureCard from '../ProductFeatureCard/ProductFeatureCard';
+import ProductFeatureCard from '../../components/ProductFeatureCard/ProductFeatureCard';
+import TrendingProductLayer from '../TrendingProductLayer/TrendingProductLayer';
+import DiscountLayer from '../DiscountLayer/DiscountLayer';
+import TopProductLayer from '../TopProductLayer/TopProductLayer';
+import BlogCard from '../../components/BlogCard/BlogCard';
+import BlogImage from '../../assets/BlogCard/Blog.png';
+
 const HomeLayer = () => {
   const latest_products = [
     {
@@ -71,29 +77,52 @@ const HomeLayer = () => {
       'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.'
     }
   ]
+
+  const blogs = [
+    {
+      'image': BlogImage,
+      'author': 'SaberAli',
+      'date': '21 August,2020',
+      'topic': "Top esssential Trends in 2021",
+      'description': 'More off this less hello samlande lied much over tightly circa horse taped mightly'
+    },
+    {
+      'image': BlogImage,
+      'author': 'SaberAli',
+      'date': '21 August,2020',
+      'topic': "Top esssential Trends in 2021",
+      'description': 'More off this less hello samlande lied much over tightly circa horse taped mightly'
+    },
+    {
+      'image': BlogImage,
+      'author': 'SaberAli',
+      'date': '21 August,2020',
+      'topic': "Top esssential Trends in 2021",
+      'description': 'More off this less hello samlande lied much over tightly circa horse taped mightly'
+    }
+  ]
   return (
     <>
-      <UpperNavBar />
-      <LowerNavBar />
+      {/* <UpperNavBar />
+      <LowerNavBar /> */}
       <MyCarousel />
-      <div className={styles['featured_section']}>
-        <p className={styles['featured_text']}>Featured Product</p>
-        <div><FeaturedProductLayer /></div>
-      </div>
-
-      <Container>
-
+      {/*       <Container>
+        <div className={styles['featured_section']}>
+          <p className={styles['featured_text']}>Featured Product</p>
+          <div><FeaturedProductLayer /></div>
+        </div>
         <div className={styles['latest_product_section']}>
           <p className={styles['latest_product_text']}>Latest Product</p>
           <div className={styles['latest_parent']}>
             {
-              latest_products.map((item) => {
+              latest_products.map((item, index) => {
                 return (
                   <LatestProductCard
                     image={item.image}
                     name={item.name}
                     current_price={item.current_price}
                     initial_price={item.initial_price}
+                    key={index}
                   />
                 )
               })
@@ -106,11 +135,12 @@ const HomeLayer = () => {
         <p className={styles["offer_text"]}>What Shopex Offer!</p>
         <div className={styles["offer_parent"]}>
           {
-            offers.map((item) => {
+            offers.map((item, index) => {
               return (
                 <OfferCard
                   image={item.image}
                   description={item.description}
+                  key={index}
                 />
               )
             })
@@ -118,7 +148,41 @@ const HomeLayer = () => {
         </div>
       </div>
       <ProductFeatureCard />
-      <FooterLayer />
+      <div className={styles['trending_product_section']}>
+        <p className={styles['trending_product']}>Trending Products</p>
+        <div>
+          <TrendingProductLayer />
+        </div>
+      </div>
+      <div className={styles['trending_product_section']}>
+        <p className={styles['trending_product']}>Discount Item</p>
+        <div>
+          <DiscountLayer />
+        </div>
+      </div>
+      <Container>
+        <div className={styles['featured_section']}>
+          <p className={styles['featured_text']}>Top Categories</p>
+          <div>
+            <TopProductLayer />
+          </div>
+        </div>
+
+        <div className={styles['featured_section']}>
+          <p className={styles['featured_text']}>Latest Blog</p>
+          <div className={styles['blog_parent']}>
+            {
+              blogs.map((item, index)=>{
+                return (
+                  <BlogCard item={item} key={index}/>
+                )
+              })
+            }
+          </div>
+        </div>
+      </Container>
+
+      <FooterLayer /> */}
 
     </>
   )
