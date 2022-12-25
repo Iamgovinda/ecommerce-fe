@@ -7,9 +7,9 @@ const ProductFeatureCard = () => {
     return (
         <div className={styles["parent"]}>
             <Container>
-                <Grid container gap={6}>
+                <Grid container justifyContent="center" columnGap={2}>
                     <Grid item md={6}>
-                        <img src={sampleImage} alt="" />
+                        <img src={sampleImage} alt="" className={styles['img']}/>
                     </Grid>
                     <Grid item md={5} className={styles['feature-section']}>
 

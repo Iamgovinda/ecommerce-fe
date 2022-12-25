@@ -62,7 +62,7 @@ const FeaturedProductLayer = () => {
         slickNext: <NextArrow btnColor={'black'}/>,
         responsive: [
             {
-              breakpoint: 1024,
+              breakpoint: 1200,
               settings: {
                 slidesToShow: 3,
                 slidesToScroll: 3,
@@ -71,7 +71,7 @@ const FeaturedProductLayer = () => {
               }
             },
             {
-              breakpoint: 600,
+              breakpoint: 800,
               settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2,
@@ -79,7 +79,7 @@ const FeaturedProductLayer = () => {
               }
             },
             {
-              breakpoint: 480,
+              breakpoint: 500,
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1

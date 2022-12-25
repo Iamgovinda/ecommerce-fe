@@ -12,7 +12,6 @@ import { Button } from '@mui/material';
 
 const DiscountLayer = () => {
     return (
-        <Container>
             <div className={styles['main']}>
                 <div className={styles['top']}>
                     <p>Wood Chair</p>
@@ -31,21 +30,21 @@ const DiscountLayer = () => {
                         <div className={styles["texts"]}>
                             <div className={styles["texts-left"]}>
                                 <div className={styles['text-item']}>
-                                    <DoneIcon />
+                                    <DoneIcon fontSize='md'/>
                                     <p>Material expose like metals</p>
                                 </div>
                                 <div className={styles['text-item']}>
-                                    <DoneIcon />
+                                    <DoneIcon fontSize='md'/>
                                     <p>Material expose like metals</p>
                                 </div>
                             </div>
                             <div className={styles["texts-right"]}>
                                 <div className={styles['text-item']}>
-                                    <DoneIcon />
+                                    <DoneIcon fontSize='md'/>
                                     <p>Material expose like metals</p>
                                 </div>
                                 <div className={styles['text-item']}>
-                                    <DoneIcon />
+                                    <DoneIcon fontSize='md'/>
                                     <p>Material expose like metals</p>
                                 </div>
                             </div>
@@ -58,7 +57,6 @@ const DiscountLayer = () => {
                     </div>
                 </div>
             </div>
-        </Container>
     )
 }
 

@@ -7,7 +7,7 @@ const FooterLayer = () => {
     return (
         <div className={styles['footer']}>
             <Container >
-                <Grid container direction='horizontal' gap={8}>
+                <Grid container direction='horizontal' gap={6}>
 
                     <Grid item md={3}>
                         <Stack gap={4}>

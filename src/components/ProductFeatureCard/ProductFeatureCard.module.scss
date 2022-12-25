@@ -1,7 +1,8 @@
 $type_one:'#151875';
 .parent {
   background-color: #f1f0ff;
-  height: 36rem;
+  // height: 36rem;
+  min-width: 568px;
   margin: 4rem 0 4rem 0;
 }
 
@@ -75,4 +76,9 @@ $type_one:'#151875';
       color: #151875;
     }
   }
+}
+
+.img{
+  height: auto;
+  width: 100%;
 }

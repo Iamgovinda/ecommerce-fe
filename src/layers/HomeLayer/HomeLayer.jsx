@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './HomeLayer.module.scss';
-import UpperNavBar from '../../components/NavBar/UpperNavBar';
-import LowerNavBar from '../../components/NavBar/LowerNavBar';
 import MyCarousel from '../../components/Carousel/Carousel';
 import { Container } from '@mui/system';
 import LatestProductCard from '../../components/ProductCard/LatestProductCard';
@@ -12,7 +10,6 @@ import thirdOfferImage from '../../assets/OfferCard/offer3.png';
 import fourthOfferImage from '../../assets/OfferCard/offer4.png';
 import latest_product from '../../assets/ProductCard/latest_product.png';
 import FeaturedProductLayer from '../FeaturedProductLayer/FeaturedProductLayer';
-import FooterLayer from '../../components/Footer/FooterLayer';
 import ProductFeatureCard from '../../components/ProductFeatureCard/ProductFeatureCard';
 import TrendingProductLayer from '../TrendingProductLayer/TrendingProductLayer';
 import DiscountLayer from '../DiscountLayer/DiscountLayer';
@@ -104,53 +101,45 @@ const HomeLayer = () => {
   ]
   return (
     <>
-      {/* <UpperNavBar />
-      <LowerNavBar /> */}
-      {/* <MyCarousel /> */}
+      <MyCarousel />
       <Container>
-        {/* <div className={styles['featured_section']}>
+        <div className={styles['featured_section']}>
           <p className={styles['featured_text']}>Featured Product</p>
           <div><FeaturedProductLayer /></div>
-        </div> */}
-        {/* <div className={styles['latest_product_section']}>
+        </div>
+        <div className={styles['latest_product_section']}>
           <p className={styles['latest_product_text']}>Latest Product</p>
-          <div className={styles['latest_parent']}>
+          <Grid container justifyContent='center' spacing={2} columnSpacing={{ xs: 4, sm: 2, md: 3 }}>
             {
               latest_products.map((item, index) => {
                 return (
-                  <LatestProductCard
-                    image={item.image}
-                    name={item.name}
-                    current_price={item.current_price}
-                    initial_price={item.initial_price}
-                    key={index}
-                  />
+                  <Grid item key={index} >
+                    <LatestProductCard item={item} key={index} />
+                  </Grid>
                 )
               })
             }
-          </div>
-        </div> */}
+          </Grid>
+        </div>
+
+        <div className={styles["offer_section"]}>
+          <p className={styles["offer_text"]}>What Shopex Offer!</p>
+          <Grid container alignItems='center' justifyContent='center' spacing={4}>
+            {
+              offers.map((item, index) => {
+                return (
+                  <Grid item key={index} lg={3} md={6} sm={6}>
+                    <OfferCard
+                      item={item}
+                    />
+                  </Grid>
+                )
+              })
+            }
+          </Grid>
+        </div>
       </Container>
 
-      <div className={styles["offer_section"]}>
-        <p className={styles["offer_text"]}>What Shopex Offer!</p>
-        <Grid container>
-          {
-            offers.map((item, index) => {
-              return (
-                <Grid item key={item} xs={1} md={2} lg={3}>
-                  <OfferCard
-                    image={item.image}
-                    description={item.description}
-                    key={index}
-                  />
-                </Grid>
-              )
-            })
-          }
-        </Grid>
-      </div>
-      {/*   
       <ProductFeatureCard />
       <div className={styles['trending_product_section']}>
         <p className={styles['trending_product']}>Trending Products</p>
@@ -158,12 +147,14 @@ const HomeLayer = () => {
           <TrendingProductLayer />
         </div>
       </div>
+
       <div className={styles['trending_product_section']}>
         <p className={styles['trending_product']}>Discount Item</p>
-        <div>
+        <Container>
           <DiscountLayer />
-        </div>
+        </Container>
       </div>
+
       <Container>
         <div className={styles['featured_section']}>
           <p className={styles['featured_text']}>Top Categories</p>
@@ -174,19 +165,19 @@ const HomeLayer = () => {
 
         <div className={styles['featured_section']}>
           <p className={styles['featured_text']}>Latest Blog</p>
-          <div className={styles['blog_parent']}>
+          <Grid container justifyContent={'center'} spacing={4} >
             {
-              blogs.map((item, index)=>{
+              blogs.map((item, index) => {
                 return (
-                  <BlogCard item={item} key={index}/>
+                  <Grid item key={index}>
+                    <BlogCard item={item} key={index} />
+                  </Grid>
                 )
               })
             }
-          </div>
+          </Grid>
         </div>
       </Container>
-
-      <FooterLayer /> */}
 
     </>
   )

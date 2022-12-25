@@ -6,11 +6,15 @@
   width: 15rem;
   border-radius: 50%;
   background-color: #f6f7fb;
+  img{
+    width: auto;
+  }
 }
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 .mid {
   font-family: "Josefin Sans";

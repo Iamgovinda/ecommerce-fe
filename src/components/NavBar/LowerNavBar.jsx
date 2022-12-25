@@ -7,8 +7,20 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-// import Link
+import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
+import { Box } from '@mui/system';
+import { Link } from 'react-router-dom';
 export default function LowerNavBar() {
+    const [anchorElForPages, setAnchorElForPages] = React.useState(null);
+    const open_page = Boolean(anchorElForPages);
+    const [pageName, setPageName] = React.useState('Home');
+    const handleClickForPages = (event) => {
+        setAnchorElForPages(event.currentTarget);
+    };
+    const handleCloseForPages = (page) => {
+        setAnchorElForPages(null);
+        setPageName(page);
+    };
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -27,7 +39,31 @@ export default function LowerNavBar() {
                         <img src={logo} alt="" />
                     </div>
                     <div className={style['menu']}>
-                        <p style={{ color: "red" }}>Home</p>
+                        <Box
+                            id="basic-button"
+                            aria-controls={open_page ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open_page ? 'true' : undefined}
+                            onClick={handleClickForPages}
+                            sx={{display:'flex', alignItems:'center'}}
+                        >
+                            <p>{pageName}</p>
+                            <ArrowDropDownOutlinedIcon style={{ color: '#FB2E86' }} fontSize='medium' />
+
+                        </Box>
+                        <Menu
+                            id="basic-menu"
+                            anchorEl={anchorElForPages}
+                            open={open_page}
+                            onClose={handleCloseForPages}
+                            MenuListProps={{
+                                'aria-labelledby': 'basic-button',
+                            }}
+                        >
+                            <MenuItem onClick={()=>handleCloseForPages('Shop Layer')}><Link to="shop-layer" >Shop Layer</Link></MenuItem>
+                            <MenuItem onClick={()=>handleCloseForPages('My Account')}>My account</MenuItem>
+                            <MenuItem onClick={()=>handleCloseForPages('LogOut')}>Logout</MenuItem>
+                        </Menu>
                         <p>Pages</p>
                         <p>Products</p>
                         <p>Blog</p>

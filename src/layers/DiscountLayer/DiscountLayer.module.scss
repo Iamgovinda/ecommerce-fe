@@ -21,6 +21,12 @@
     display: flex;
     flex-direction: column;
   }
+  .right {
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
   display: flex;
   .l_top {
     font-family: "Josefin Sans";
@@ -78,4 +84,46 @@
   letter-spacing: 0.02em;
 
   color: #b7bacb;
+}
+@media screen and (max-width:1190px)
+{
+  .bottom{
+    flex-direction: column;
+    .left {
+      .texts {
+        align-items: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .bottom {
+    flex-direction: column;
+
+    .left {
+      .texts {
+        align-items: center;
+        .texts-left {
+          .text-item {
+            p {
+              font-size: 3vw;
+            }
+          }
+        }
+        .texts-right{
+          .text-item{
+            p{
+              font-size: 3vw;
+            }
+          }
+        }
+      }
+    }
+    .right {
+      img {
+        height: 20rem;
+      }
+    }
+  }
 }

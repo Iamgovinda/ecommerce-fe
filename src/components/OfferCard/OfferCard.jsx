@@ -5,10 +5,10 @@ const OfferCard = (props) => {
     return (
         <div className={styles["parent"]}>
             <div className="top">
-                <img src={props.image} alt="" />
+                <img src={props.item.image} alt="" />
             </div>
             <p className={styles['offer_text']}>24/7 Support</p>
-            <p className={styles['offer_desc']}>{props.description}</p>
+            <p className={styles['offer_desc']}>{props.item.description}</p>
         </div>
     )
 }
