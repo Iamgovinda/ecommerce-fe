@@ -6,7 +6,7 @@ import styles from "./BreadCrumbCard.module.scss";
 
 const BreadCrumbCard = (props) => {
     return (
-        <Box sx={{ backgroundColor: "#F6F5FF", minHeight: "286px", display: "flex", alignItems: "center" }}>
+        <Box sx={{ backgroundColor: "#F6F5FF", minHeight: "220px", display: "flex", alignItems: "center" }}>
             <Container sx={{ alignItem: "flex-start", display: "flex", gap: "10px", flexDirection: "column" }} >
                 <Typography className={styles['text-1']}>
                     {props.view} 

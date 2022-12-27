@@ -1,0 +1,36 @@
+.top-texts {
+  display: flex;
+  gap: 5rem;
+  .texts-1 {
+    font-family: "Josefin Sans";
+    font-size: 24px !important;
+    line-height: 28px;
+    color: #151875;
+  }
+
+  .texts-1:hover {
+    cursor: pointer;
+  }
+  .texts-1:active {
+    text-decoration: underline;
+  }
+}
+
+.parent {
+  background-color: #f9f8fe;
+  padding: 20px 20px;
+}
+
+.texts-2 {
+  font-family: "Josefin Sans";
+  font-size: 16px;
+  line-height: 29px;
+  color: #a9acc6;
+}
+
+.mid-top {
+  font-family: "Josefin Sans";
+  font-size: 22px;
+  line-height: 26px;
+  color: #151875;
+}

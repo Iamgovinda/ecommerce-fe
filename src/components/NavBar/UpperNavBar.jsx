@@ -10,6 +10,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 // import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from "react-router-dom";
 // import MenuIcon from '@mui/icons-material/Menu';
 
 const UpperNavBar = () => {
@@ -100,7 +101,7 @@ const UpperNavBar = () => {
               <MenuItem onClick={() => handleCloseForCurrency("INR")} >INR</MenuItem>
             </Menu>
           <div className={styles['login']}>
-            <p>Login</p>
+            <p><Link to={'/login'}>Login</Link></p>
             <PersonOutlineOutlinedIcon />
           </div>
           <div className={styles['wishlist']}>
