@@ -1,5 +1,4 @@
 import React from 'react';
-import Carousel from 'react-material-ui-carousel';
 import Slider from 'react-slick';
 import TopProductCard from '../../components/TopProductCard/TopProductCard';
 import styles from '../FeaturedProductLayer/FeaturedProductLayer.scss';

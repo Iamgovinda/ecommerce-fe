@@ -2,7 +2,7 @@ import React from 'react';
 
 // import Button from '@mui/material/Button';
 import styles from './TrendingProductCard.module.scss';
-import trendingProduct from '../../assets/TrendingProduct/trending_product.png';
+// import trendingProduct from '../../assets/TrendingProduct/trending_product.png';
 const TrendingProductCard = (props) => {
     return (
         <div className={styles["main"]}>

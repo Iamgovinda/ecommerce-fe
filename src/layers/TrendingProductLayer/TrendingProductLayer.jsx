@@ -5,7 +5,6 @@ import ShopNowCard from '../../components/TrendingProductCard/ShopNowCard';
 import ViewCollectionCard from '../../components/TrendingProductCard/ViewCollectionCard';
 import MiniTrendingCard from '../../components/TrendingProductCard/MiniTrendingCard';
 import trendingProduct from '../../assets/TrendingProduct/trending_product.png';
-import { lightGreen } from '@mui/material/colors';
 import './TrendingProductLayer.scss';
 
 const TrendingProductLayer = () => {

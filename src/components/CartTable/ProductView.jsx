@@ -6,7 +6,7 @@ import product from '../../assets/Cart/product.png';
 import { Typography } from '@mui/material';
 import styles from './ProductView.module.scss';
 import CancelIcon from '@mui/icons-material/Cancel';
-import {Button} from '@mui/material';
+// import {Button} from '@mui/material';
 
 const ProductView = (props) => {
     return (
