@@ -100,9 +100,11 @@ const UpperNavBar = () => {
               <MenuItem onClick={() => handleCloseForCurrency("NPR")} >NPR</MenuItem>
               <MenuItem onClick={() => handleCloseForCurrency("INR")} >INR</MenuItem>
             </Menu>
-          <div className={styles['login']}>
-            <p><Link to={'/login'}>Login</Link></p>
+          <div >
+          <Link to={'/login'} className={styles['login']}>
+            <p>Login</p>
             <PersonOutlineOutlinedIcon />
+            </Link>
           </div>
           <div className={styles['wishlist']}>
             <p>Wishlist</p>

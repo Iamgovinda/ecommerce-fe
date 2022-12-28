@@ -60,7 +60,7 @@ export default function LowerNavBar() {
                                 'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <MenuItem onClick={()=>handleCloseForPages('Shop Layer')}><Link to="shop-layer" >Shop Layer</Link></MenuItem>
+                            <MenuItem onClick={()=>handleCloseForPages('Shop Layer')}><Link to="shop-layer"  className={style['shop-layer-txt']}>Shop Layer</Link></MenuItem>
                             <MenuItem onClick={()=>handleCloseForPages('My Account')}>My account</MenuItem>
                             <MenuItem onClick={()=>handleCloseForPages('LogOut')}>Logout</MenuItem>
                         </Menu>
