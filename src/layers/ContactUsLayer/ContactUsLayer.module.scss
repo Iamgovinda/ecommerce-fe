@@ -24,8 +24,15 @@
   }
 }
 
-.btn, .btn:hover, .btn:active {
-  background-color: #fb2e86;
+.btn,
+.btn:hover,
+.btn:active {
+  background-color: #fb2e86 !important;
   border-radius: 3px;
-  color: white;
+  color: white !important;
+}
+
+.contact-us-img{
+  height: auto;
+  width: 100%;
 }

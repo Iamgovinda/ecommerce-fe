@@ -12,7 +12,7 @@ const ContactUsLayer = () => {
             <BreadCrumbCard view="Contact Us" />
             <Box>
                 <Container>
-                    <Grid container spacing={5}>
+                    <Grid container spacing={5} alignItems='center' justifyContent={'center'}>
                         <Grid item lg={6}>
                             <p className={styles["text-1"]}>Information About us</p>
                             <p className={styles["text-common"]}>
@@ -111,14 +111,14 @@ const ContactUsLayer = () => {
                                 </p>
                             </Box>
                             <Grid container spacing={3}>
-                                <Grid item lg={6}>
+                                <Grid item lg={6} sm={12} md={12}>
                                     <TextField
                                         fullWidth
                                         label="Your Name*"
                                         placeholder=""
                                     ></TextField>
                                 </Grid>
-                                <Grid item lg={6}>
+                                <Grid item lg={6} sm={12} md={12}>
                                     <TextField
                                         fullWidth
                                         type={"email"}
@@ -144,7 +144,7 @@ const ContactUsLayer = () => {
                             </Button>
                         </Grid>
                         <Grid item lg={6}>
-                            <img src={contactUsImage} alt="" />
+                            <img src={contactUsImage} alt="" className={styles['contact-us-img']}/>
                         </Grid>
                     </Grid>
                 </Container>
