@@ -19,6 +19,8 @@
     }
     .login{
       @extend .currency;
+      color: white;
+      text-decoration: none;
     }
     .wishlist{
       @extend .language;
@@ -49,6 +51,8 @@
 .toggle{
   display: none;
 }
+
+
 
 @media screen and (max-width: 750px) {
   .upperNav {
