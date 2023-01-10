@@ -7,7 +7,7 @@ const LoginLayer = () => {
     return (
         <>
             <BreadCrumbCard view="Login" />
-            <Container disp>
+            <Container>
                 <LoginCard />
             </Container>
         </>
