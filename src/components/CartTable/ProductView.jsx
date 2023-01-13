@@ -12,7 +12,7 @@ const ProductView = (props) => {
     return (
         <Container className={styles['main-container']}>
             <Box className={styles['image-box']}>
-                <img src={product} alt="product" />
+                <img src={props?.item?.image ?? product} alt="product" />
                 {props?.displayCloseBtn && (
                     
                     <CancelIcon fontSize='sm' className={styles['cross-icon']} />

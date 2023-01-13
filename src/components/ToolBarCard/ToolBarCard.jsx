@@ -15,7 +15,7 @@ const ToolBarCard = (props) => {
                     Ecommerce Acceories & Fashion item
                 </Typography>
                 <Typography className={styles["text-2"]}>
-                    About 9,620 results (0.62 seconds)
+                    About {props.count} results (0.62 seconds)
                 </Typography>
             </Box>
             <Box className={styles["box-right"]}>
@@ -26,9 +26,9 @@ const ToolBarCard = (props) => {
                 <Box className="box-2">
                     <span>Sort By:</span>{" "}
                     <select name="" id="">
-                        <option value="">opt1</option>
-                        <option value="">opt1</option>
-                        <option value="">opt1</option>
+                        <option className={styles["sort_by"]} value="name">name</option>
+                        <option className={styles["sort_by"]} value="quantity">quantity</option>
+                        <option className={styles["sort_by"]} value="base_price">price</option>
                     </select>
                 </Box>
                 <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
@@ -39,7 +39,7 @@ const ToolBarCard = (props) => {
                         onClick={()=>props.setView('List') }
                         className={styles['list-view']}
                     />
-                    <input type="text" style={{ width: "5rem", marginLeft: "1rem" }} />
+                    {/* <input type="text" style={{ width: "5rem", marginLeft: "1rem" }} /> */}
                 </Box>
             </Box>
         </Box>

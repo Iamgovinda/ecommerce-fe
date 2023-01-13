@@ -18,6 +18,11 @@
       @extend .base;
       background-color: #f5f6f8;
       height: 15.25rem;
+      .trending-image{
+        max-height: 12rem;
+        max-width: 11rem;
+        padding: 10px;
+      }
     }
     .name {
       font-family: "Lato";
@@ -51,5 +56,8 @@
         color: rgba(21, 24, 117, 0.3);
       }
     }
+  }
+  .parent:hover{
+    cursor: pointer;
   }
 }

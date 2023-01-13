@@ -23,14 +23,21 @@
   }
 }
 
-.box-right{
-    display: flex;
-    gap: 2rem;
-    .list-view:hover{
-        cursor: pointer;
-    }
-    .grid-view:hover{
-        cursor: pointer;
-    }
-    
+.box-right {
+  display: flex;
+  gap: 2rem;
+  .list-view:hover {
+    cursor: pointer;
+  }
+  .grid-view:hover {
+    cursor: pointer;
+  }
+  .sort_by {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px !important;
+    line-height: 18px;
+    color: #8a8fb9;
+  }
 }

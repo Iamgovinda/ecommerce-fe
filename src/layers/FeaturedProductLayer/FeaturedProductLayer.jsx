@@ -11,8 +11,7 @@ import product from '../../assets/ProductCard/product.png';
 import Slider from 'react-slick';
 import FeaturedProductCard from '../../components/ProductCard/FeaturedProductCard';
 
-const FeaturedProductLayer = () => {
-
+const FeaturedProductLayer = (props) => {
     const PrevArrow = (props) => {
         const {style, onClick, btnColor } = props;
 
@@ -141,7 +140,7 @@ const FeaturedProductLayer = () => {
     return (
         <Slider {...settings}>
             {
-                featured_products.map((item, i) => <FeaturedProductCard key={i} items={item} />)
+                props?.products?.map((item, i) => <FeaturedProductCard key={i} items={item} setIsLoading={props?.setIsLoading}/>)
             }
         </Slider>
     )

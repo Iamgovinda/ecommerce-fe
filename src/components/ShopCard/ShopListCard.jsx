@@ -8,30 +8,31 @@ import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
+import { Paper } from '@mui/material';
 
-const ShopListCard = () => {
+const ShopListCard = (props) => {
     return (
-        <Grid container >
-            <Grid item lg={4} display="flex" justifyContent="center">
-                <img src={shopGridImage} alt="shop_image" />
+        <Grid container columnSpacing={4} marginBottom={5} className={styles['parent']}>
+            <Grid item lg={4} display="flex" justifyContent="center" style={{paddingLeft:'0 !important'}}>
+                <Paper children={<img src={props?.item?.images[0]?.file ?? shopGridImage} alt="shop_image" style={{maxWidth:'20rem'}}/>} elevation={2} square={true} className={styles['paper']}/>
             </Grid>
-            <Grid item lg={6}>
+            <Grid item lg={8}>
                 <Box className={styles['box-parent']}>
                     <Box display={'flex'} gap={'5px'} justifyContent='flex-start' alignItems={'center'}>
-                        <Typography className={styles["text-1"]}>Accumsan tincidunt</Typography>
+                        <Typography className={styles["text-1"]}>{props?.item?.name}</Typography>
                         <Box className={styles["box-1"]}></Box>
                         <Box className={styles["box-2"]}></Box>
                         <Box className={styles["box-3"]}></Box>
                     </Box>
                     <Box display={'flex'} alignItems={"center"}>
-                        <span className={styles["price-discounted"]}>$26.00 </span> <span className={styles["price-initial"]}>$52.00</span> 
+                        <span className={styles["price-discounted"]}>Rs {props?.item?.base_price- props?.item?.discount_price} </span> <span className={styles["price-initial"]}>Rs {props?.item?.base_price}</span> 
                         <StarOutlineIcon style={{fontSize:"20px", marginLeft:"10px"}}/>
                         <StarOutlineIcon style={{fontSize:"20px"}}/>
                         <StarOutlineIcon style={{fontSize:"20px"}}/>
                     </Box>
                     <Box>
                         <Typography className={styles['prod-description']}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.
+                            {props?.item?.description}
                         </Typography>
                     </Box>
                     <Box display={"flex"} gap={5}>

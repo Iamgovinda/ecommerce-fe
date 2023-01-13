@@ -23,9 +23,13 @@
 
 .image-box{
   position: relative;
+  img{
+    max-width: 4rem;
+    max-height: 4rem;
+  }
 }
-.cross-icon{
-  position:absolute;
-  top: 0;
-  right: 0;
-}
+// .cross-icon{
+//   position:absolute;
+//   top: 0;
+//   right: 0;
+// }

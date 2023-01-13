@@ -1,3 +1,6 @@
+.parent:hover, .parent:active{
+  cursor: pointer;
+}
 .shop-image-parent {
   display: flex;
   align-items: center;
@@ -31,13 +34,15 @@
       color: #151875;
     }
     .span-2 {
-        font-family: "Josefin Sans";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 14px;
-        text-align: center;
-        color: #151875;
+      font-family: 'Josefin Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 14px;
+      text-align: center;
+      text-decoration-line: line-through;
+      color: #FB2E86;
+      
       }
   }
 }

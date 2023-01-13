@@ -7,7 +7,8 @@ import MiniTrendingCard from '../../components/TrendingProductCard/MiniTrendingC
 import trendingProduct from '../../assets/TrendingProduct/trending_product.png';
 import './TrendingProductLayer.scss';
 
-const TrendingProductLayer = () => {
+const TrendingProductLayer = (props) => {
+
     const trending_products = [
         {
             'image': trendingProduct,
@@ -43,7 +44,7 @@ const TrendingProductLayer = () => {
         <Container>
             <Grid container justifyContent='center' spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
-                        trending_products.map((item, index) => {
+                        props.item.map((item, index) => {
                             return (
                                 <Grid item xs={3} key={index}>
                                     <TrendingProductCard item={item} />
@@ -53,7 +54,7 @@ const TrendingProductLayer = () => {
                     }
 
                 </Grid>
-            <Grid container spacing={{ xs: 2, md: 3, lg: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} className='grid_bottom'>
+            {/* <Grid container spacing={{ xs: 2, md: 3, lg: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} className='grid_bottom'>
                 <Grid item>
                     <ShopNowCard />
                 </Grid>
@@ -67,7 +68,7 @@ const TrendingProductLayer = () => {
                         <MiniTrendingCard />
                     </Stack>
                 </Grid>
-            </Grid>
+            </Grid> */}
 
         </Container>
     )

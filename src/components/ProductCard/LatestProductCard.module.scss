@@ -1,20 +1,28 @@
 .parent {
   display: flex;
   flex-direction: column;
-  height: 270px;
-  height: 360px;
+  background-color: #F5F6F8;
   .top {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f7f7f7;
     height: 270px;
-    width: 360px;
+    img{
+      max-width: 175px !important;
+      max-height: 175px !important;
+    }
   }
   .bottom {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: #ffff;
+    p {
+      font-family: "Josefin Sans";
+      font-size: 16px;
+      line-height: 19px;
+      color: #151875;
+    }
     .bottom_right {
       display: flex;
       align-items: center;
@@ -34,4 +42,8 @@
       }
     }
   }
+}
+
+.parent:hover, .parent:active, .parent:focus{
+  cursor: pointer;
 }

@@ -1,16 +1,42 @@
 import BreadCrumbCard from "../../components/BreadCrumbCard/BreadCrumbCard";
-import React from 'react';
+import React, { useEffect } from 'react';
 import ShopGridCard from "../../components/ShopCard/ShopGridCard";
 import { Grid, Stack } from "@mui/material";
 import { Container } from "@mui/material";
 import ToolBarCard from "../../components/ToolBarCard/ToolBarCard";
 import shopGridImage from "../../assets/Shops/shopImage.png";
 import ShopListCard from "../../components/ShopCard/ShopListCard";
+import { get, post } from '../../API/axios';
+import { useProductContext } from "../../context/ProductContext";
 
 
 const ShopGridLayer = () => {
     const [view, setView] = React.useState('Grid');
-    console.log(view);
+    const [product, setProduct] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(true);
+    const [isError, setIsError] = React.useState(false);
+    const { products } = useProductContext();
+    useEffect(() => {
+        if (products === undefined || products?.length===0){
+            if (isLoading)
+            get(`product`).then((response) => {
+                setProduct(response.data.results);
+                setIsLoading(false);
+            }
+            ).then((error) => {
+                console.log(error);
+                setIsError(true);
+                setIsLoading(false);
+            })
+        }
+        else if(products === false){
+            setProduct([]);
+        }
+        else{
+            setProduct(products);
+        }
+
+    }, [isLoading, products])
     const shop_grid_data = [
         {
             "image": shopGridImage,
@@ -99,19 +125,17 @@ const ShopGridLayer = () => {
                 )
             }
             <Container>
-                <ToolBarCard setView={setView} />
+                <ToolBarCard setView={setView} count={product.length} />
                 {
                     view && view === "Grid" && (
                         <Grid container justifyContent="center" spacing={4}>
                             {
-                                shop_grid_data.map((item, index) => {
+                                product.map((item, index) => {
 
                                     return (
-                                        <>
-                                            <Grid item key={index} lg={3} md={4} sm={8}>
-                                                <ShopGridCard item={item} />
-                                            </Grid>
-                                        </>
+                                        <Grid item key={index} lg={3} md={4} sm={8}>
+                                            <ShopGridCard item={item} key={index} />
+                                        </Grid>
                                     )
                                 })
                             }
@@ -120,17 +144,15 @@ const ShopGridLayer = () => {
                 }
                 {
                     view && view === "List" && (
-                        <Stack spacing={5}>
+                        <>
                             {
-                                shop_grid_data.map((item, index) => {
+                                product.map((item, index) => {
                                     return (
-                                        <>
-                                            <ShopListCard item={item} />
-                                        </>
+                                        <ShopListCard item={item} key={index} />
                                     )
                                 })
                             }
-                        </Stack>
+                        </>
                     )
                 }
 

@@ -114,8 +114,8 @@ export default function LowerNavBar() {
                             {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
                             <MenuItem onClick={handleClose}>My account</MenuItem>
                             <MenuItem onClick={handleClose}>Logout</MenuItem> */}
-                            {menuItems.map((item) => {
-                                return <MenuItem onClick={handleClose}>{item}</MenuItem>;
+                            {menuItems.map((item, index) => {
+                                return <MenuItem onClick={handleClose} key={index}>{item}</MenuItem>;
                             })}
                         </Menu>
                     </div>

@@ -5,9 +5,11 @@ import chair from '../../assets/Carousel/chair.png';
 import backgroundImage from '../../assets/Carousel/back.png';
 import discountBoard from '../../assets/Carousel/discount.png';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 const Item = (props) => {
+    const navigate = useNavigate();
     return (
         <div className={styles['parent']}>
             <div className={styles['left']}>
@@ -16,17 +18,17 @@ const Item = (props) => {
                 </div>
                 <div className={styles['info']}>
                     <p className={styles['top_info']}>Best Furniture For Your Castle...</p>
-                    <p className={styles['mid_info']}>New Furniture Collection Trends in 2020</p>
+                    <p className={styles['mid_info']}>New Furniture Collection Trends in 2023</p>
                     <p className={styles['bottom_info']}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus error iure et maiores deleniti est.</p>
-                    <Button className={styles['shop_now_btn']} variant="contained">Shop Now</Button>
+                    <Button className={styles['shop_now_btn']} variant="contained" onClick={()=>navigate('/shop-layer')}>Shop Now</Button>
                 </div>
             </div>
                 <div className={styles['right']}>
                     <img src={backgroundImage} alt="backImage" className={styles['backgroundImage']} />
-                    <img src={chair} alt="chair" className={styles['chair']} />
+                    <img src={props?.item?.images?.[0]?.file ?? chair} alt="chair" className={styles['chair']} />
                     <img src={discountBoard} alt="" className={styles['discountBoard']} />
                     <span className={styles['discount']}>
-                        50%
+                        {props?.item?.discount_per}%
                         off
                     </span>
             </div>

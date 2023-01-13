@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './HomeLayer.module.scss';
 import MyCarousel from '../../components/Carousel/Carousel';
 import { Container } from '@mui/system';
@@ -17,8 +17,47 @@ import TopProductLayer from '../TopProductLayer/TopProductLayer';
 import BlogCard from '../../components/BlogCard/BlogCard';
 import BlogImage from '../../assets/BlogCard/Blog.png';
 import { Grid } from '@mui/material';
+import { get, post } from '../../API/axios';
 
 const HomeLayer = () => {
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [latestProducts, setLatestProducts] = useState([]);
+  const [topDiscountedProducts, setTopDiscountedProducts] = useState([]);
+  const [trendingProducts, setTrendingProducts] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(()=>{
+    if (isLoading) {
+      get(`product/latest-products/`).then((response)=>{
+        setLatestProducts(response.data);
+      }).catch((err)=>{
+        setIsError(false);
+        setIsLoading(false);
+      })
+      get(`product/featured-products/`).then((response)=>{
+        setFeaturedProducts(response.data);
+      }).catch((err)=>{
+        setIsError(false);
+        setIsLoading(false);
+      })
+      get(`product/top-discount-products/`).then((response)=>{
+        setTopDiscountedProducts(response.data);
+      }).catch((err)=>{
+        setIsError(false);
+        setIsLoading(false);
+      })
+      get(`/product/trending-products/`).then((response)=>{
+        if(response.status===200){
+          setTrendingProducts(response.data.results);
+        }
+      }).catch((err)=>{
+        setIsError(false);
+        setIsLoading(false);
+      })
+    }
+    
+  }, [isLoading])
+
   const latest_products = [
     {
       'image': latest_product,
@@ -99,21 +138,23 @@ const HomeLayer = () => {
       'description': 'More off this less hello samlande lied much over tightly circa horse taped mightly'
     }
   ]
+
+
   return (
     <>
-      <MyCarousel />
+      <MyCarousel items={topDiscountedProducts}/>
       <Container>
         <div className={styles['featured_section']}>
           <p className={styles['featured_text']}>Featured Product</p>
-          <div><FeaturedProductLayer /></div>
+          <div><FeaturedProductLayer products = {featuredProducts} setIsLoading={setIsLoading}/></div>
         </div>
         <div className={styles['latest_product_section']}>
           <p className={styles['latest_product_text']}>Latest Product</p>
-          <Grid container justifyContent='center' spacing={2} columnSpacing={{ xs: 4, sm: 2, md: 3 }}>
+          <Grid container justifyContent='flex-start' spacing={2} columnSpacing={{ xs: 4, sm: 2, md: 3 }}>
             {
-              latest_products.map((item, index) => {
+              latestProducts.map((item, index) => {
                 return (
-                  <Grid item key={index} >
+                  <Grid item key={index} md={3} lg={3}>
                     <LatestProductCard item={item} key={index} />
                   </Grid>
                 )
@@ -140,11 +181,11 @@ const HomeLayer = () => {
         </div>
       </Container>
 
-      <ProductFeatureCard />
+      {/* <ProductFeatureCard /> */}
       <div className={styles['trending_product_section']}>
         <p className={styles['trending_product']}>Trending Products</p>
         <div>
-          <TrendingProductLayer />
+          <TrendingProductLayer item={trendingProducts}/>
         </div>
       </div>
 

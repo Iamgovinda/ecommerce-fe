@@ -1,16 +1,36 @@
 .parent {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+  }
   .top {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f6f7fb;
+    flex-direction: column;
+    position: relative;
     height: 250px;
     width: 270px;
+    margin-left: 0.4rem;
+    img{
+      max-width: 11.12rem;
+      max-width: 11.12rem;
+    }
+    .view-details {
+      position: absolute;
+      bottom: 1rem;
+      background-color: #08d15f;
+      border-radius: 2px;
+      font-family: "Josefin Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 12px;
+      color: #ffffff;
+    }
   }
   .bottom {
     background-color: #ffffff;
@@ -42,10 +62,9 @@
       .b3 {
         @extend .b2;
         background-color: #00009d;
-        
       }
     }
-    .c{
+    .c {
       font-family: "Josefin Sans";
       font-size: 14px;
       line-height: 16px;
@@ -54,9 +73,21 @@
 
       color: #151875;
     }
-    .d{
-        @extend .c;
-        margin-bottom: 2px;
+    .d {
+      @extend .c;
+      margin-bottom: 2px;
     }
+  }
+.icons {
+  text-align: left !important;
+  padding: 0 0.4rem;
+  margin-left: 5px;
+  gap: 5px;
+  .icon {
+    margin-top: 10px;
+    color: #2f1ac4;
+  }
+  .icon:hover{
+    cursor: pointer;
   }
 }

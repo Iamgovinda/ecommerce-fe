@@ -45,6 +45,20 @@ export const patch = (url, data) => {
     throw error;
   }
 };
+export const remove = (url) => {
+  try {
+    return axios
+      .delete(url)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        return error;
+      });
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const loginPOST = (url, data) => {
   console.log("rootURL:", config.apiURL)
@@ -56,3 +70,7 @@ export const loginPOST = (url, data) => {
 export const registerPOST = (url, data) => {
   return axios.post(config.apiURL + url, data);
 };
+
+export const addToCart = (uuid, quantity) =>{
+  return axios.post(config.apiURL + '/order/', {product:uuid, quantity:quantity})
+}

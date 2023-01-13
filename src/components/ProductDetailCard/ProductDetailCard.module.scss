@@ -43,3 +43,42 @@
   padding: 20px 30px;
   margin-top: 2rem;
 }
+
+.add_to_cart{
+  background-color: #fb2e86 !important;
+  border-radius: 2px;
+  font-family: "Josefin Sans" !important;
+  font-size: 17px !important;
+  line-height: 20px !important;
+  letter-spacing: 0.02em !important;
+  color: #ffffff;
+}
+.add_to_cart:hover, .add_to_cart:active {
+  background-color: #fb2e86 !important;
+  border-radius: 2px;
+  font-family: "Josefin Sans";
+  font-size: 17px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+}
+
+.plus, .minus{
+  height: 2rem;
+  width: 2rem;
+  background-color: #EEEFFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-quantity{
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+.plus:hover, .minus:hover{
+  cursor: pointer;
+}

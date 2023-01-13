@@ -32,11 +32,9 @@ const ProductDetailLayer = () => {
             'price': '$43.00'
         }
     ]
-
-    
     return (
         <>
-            <BreadCrumbCard view={"Shop List"} />
+            <BreadCrumbCard view={"Product Detail"} />
             <Stack gap={10}>
                 <ProductDetailCard />
                 <ProductDescriptionCard />

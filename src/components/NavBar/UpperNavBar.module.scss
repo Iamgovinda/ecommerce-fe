@@ -21,9 +21,19 @@
       @extend .currency;
       color: white;
       text-decoration: none;
+      .logout{
+        margin-left: 5px;
+
+      }
+      .logout:hover{
+        cursor: pointer;
+      }
     }
     .wishlist{
       @extend .language;
+      .shopping_cart{
+        cursor: pointer;
+      }
     }
   }
   .left {

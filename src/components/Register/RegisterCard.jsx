@@ -104,6 +104,7 @@ const RegisterCard = () => {
           >
             <TextField
               fullWidth
+              type={'text'}
               label="Full Name"
               id="outlined-required first_name"
               placeholder='Full Name'
@@ -111,6 +112,7 @@ const RegisterCard = () => {
             />
             <TextField
               fullWidth
+              type={'email'}
               label="Email"
               id="outlined-required email"
               placeholder='Email Address'
@@ -118,6 +120,7 @@ const RegisterCard = () => {
             />
             <TextField
               fullWidth
+              type={'number'}
               label="Phone Number"
               id="outlined-required phone_number"
               placeholder='Phone Number'
