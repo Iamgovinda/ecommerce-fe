@@ -6,7 +6,7 @@ import '../FeaturedProductLayer/FeaturedProductLayer.scss';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-const TopProductLayer = () => {
+const TopProductLayer = (props) => {
     const top_products = [
         {
             'name': 'Cantilever chair',
@@ -128,7 +128,7 @@ const TopProductLayer = () => {
     return (
         <Slider {...settings}>
             {
-                top_products.map((item, i) => <TopProductCard key={i} items={item} />)
+                props?.categories?.map((item, i) => <TopProductCard key={i} items={item} />)
             }
         </Slider>
     )

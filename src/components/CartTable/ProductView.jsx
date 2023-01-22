@@ -21,8 +21,8 @@ const ProductView = (props) => {
             </Box>
             <Stack>
                 <Typography className={styles['product-name']}>{props.item.name}</Typography>
-                <Typography className={styles['product-common']}>Color: {props.item.color}</Typography>
-                <Typography className={styles['product-common']}>Size: {props.item.size}</Typography>
+                <Typography className={styles['product-common']}>Company: {props.item?.manufacturer ?? "ABC company"}</Typography>
+                <Typography className={styles['product-common']}>Code: {props.item?.code ?? "hiuwrenjkf2"}</Typography>
             </Stack>
         </Container>
     )

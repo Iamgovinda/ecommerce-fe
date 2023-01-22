@@ -7,8 +7,10 @@ import styles from './OrderCompleted.module.scss';
 import { Container } from '@mui/material';
 import { Button } from '@mui/material';
 import VerifiedIcon from '@mui/icons-material/Verified';
+import { useNavigate } from 'react-router-dom';
 
 const OrderCompleted = () => {
+    const navigate = useNavigate();
     return (
         <>
             <BreadCrumbCard view="Order Completed" />
@@ -25,7 +27,7 @@ const OrderCompleted = () => {
                     <Typography className={styles['mid-text']}> Thank you for your order! Your order is being processed and will be completed within 3-6
                         hours. You will receive an email confirmation when your order is completed.
                     </Typography>
-                    <Button className={styles['btn']}>
+                    <Button className={styles['btn']} onClick={()=>navigate('/')}>
                         Continue Shopping
                     </Button>
                     <img src={checkList} alt="" height={50} className={styles['img-down']}/>

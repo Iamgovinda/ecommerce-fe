@@ -29,6 +29,9 @@
         cursor: pointer;
       }
     }
+    .login:hover{
+      cursor: pointer;
+    }
     .wishlist{
       @extend .language;
       .shopping_cart{

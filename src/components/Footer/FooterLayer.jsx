@@ -3,11 +3,12 @@ import { Grid, Container, Stack } from '@mui/material';
 import logo from '../../assets/Nav/logo.png';
 import styles from './FooterLayer.module.scss';
 import SearchBar from '../SearchBar/SearchBar';
+import { Link } from 'react-router-dom';
 const FooterLayer = () => {
     return (
         <div className={styles['footer']}>
             <Container >
-                <Grid container direction='horizontal' gap={6}>
+                <Grid container gap={6}>
 
                     <Grid item md={3}>
                         <Stack gap={4}>
@@ -17,7 +18,7 @@ const FooterLayer = () => {
                             <SearchBar />
                             <div>
                                 <p className={styles['info']}>Contact Info</p>
-                                <p className={styles['info']}>17 Princess Road, London, Greater London NW1 8JR, UK</p>
+                                <p className={styles['info']}>Ekantakuna, Lalitpur</p>
                             </div>
                         </Stack>
                     </Grid>
@@ -25,11 +26,11 @@ const FooterLayer = () => {
                         <p className={styles["catagories"]}>
                             Catagories
                         </p>
-                        <p className={styles['catagory']}>Laptops & Computers</p>
-                        <p className={styles['catagory']}>Cameras & Photography</p>
-                        <p className={styles['catagory']}>Smart Phones & Tablets</p>
-                        <p className={styles['catagory']}>Video Games & Consoles</p>
-                        <p className={styles['catagory']}>Waterproof Headphones</p>
+                        <p className={styles['catagory']}>Double Bed</p>
+                        <p className={styles['catagory']}>Chair</p>
+                        <p className={styles['catagory']}>Bed</p>
+                        <p className={styles['catagory']}>Sofa</p>
+                        <p className={styles['catagory']}>Bench</p>
                     </Grid>
                     <Grid item md={2}>
                         <p className={styles["customer-care"]}>
@@ -45,12 +46,11 @@ const FooterLayer = () => {
                         <p className={styles["pages"]}>
                             Pages
                         </p>
-                        <p className={styles["page"]}>Blog</p>
-                        <p className={styles["page"]}>Browse the Shop</p>
-                        <p className={styles["page"]}>Category</p>
-                        <p className={styles["page"]}>Returns</p>
-                        <p className={styles["page"]}>Orders History</p>
-                        <p className={styles["page"]}>Order Tracking</p>
+                        <p><Link to={'shop-layer'} className={styles["page"]}>Shop Page</Link></p>
+                        <p><Link to={'/order-history'} className={styles["page"]}>Orders History</Link></p>
+                        <p><Link to={'/about'} className={styles["page"]}>About</Link></p>
+                        <p><Link to={'/contact'} className={styles["page"]}>Contact</Link></p>
+                        <p><Link to={'/FAQ'} className={styles["page"]}>FAQ</Link></p>
                     </Grid>
 
                 </Grid>

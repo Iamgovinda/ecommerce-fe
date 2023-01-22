@@ -47,7 +47,49 @@
       gap: 1rem;
       width: 50ch;
   }
+
+  .input-style {
+    height: 3rem;
+    width: 3rem !important;
+  }
+
+  .container-style{
+    margin-bottom: 1.5rem;
+}
+
+.otp-dialog-title {
+  background-color: #eeeffb;
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem !important;
+}
   
+.dialog-box{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.verify-btn{
+  background-color: #fb2e86 !important;
+  margin-bottom: 1rem !important;
+
+}
+.otp-img{
+  height: 10rem;
+  width: auto;
+  margin-bottom: 1rem;
+}
+.activate-your-account{
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 5%;
+  text-align: center;
+}
   // @media screen and (max-width: 414px) {
   //     .parent{
   //         margin: 1rem;

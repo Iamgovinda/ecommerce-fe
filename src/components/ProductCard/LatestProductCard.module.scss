@@ -2,6 +2,21 @@
   display: flex;
   flex-direction: column;
   background-color: #F5F6F8;
+  position: relative;
+  .icons{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 3.5rem;
+    left: 0.5rem;
+    .icon {
+      margin-top: 10px;
+      color: #2f1ac4;
+    }
+    .icon:hover{
+      cursor: pointer;
+    }
+  }
   .top {
     display: flex;
     justify-content: center;

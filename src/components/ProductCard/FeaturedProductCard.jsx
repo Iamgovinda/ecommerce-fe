@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./FeaturedProductCard.module.scss";
 import product from "../../assets/ProductCard/product.png";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -45,36 +45,36 @@ const FeaturedProductCard = (props) => {
 
   return (
     <>
-      <div className={styles["icons"]}>
-        <span>
-          <ShoppingCartOutlinedIcon
-            className={styles["icon"]}
-            onClick={() => setOpen(true)}
-          />
-        </span>
-        {isAuthed &&
-          (wished ? (
-            <span>
-              <FavoriteIcon
-                className={styles["icon"]}
-                onClick={() => removeFromWishList(wishListUUID)}
-                style={{ color: "red" }}
-              />
-            </span>
-          ) : (
-            <span>
-              <FavoriteBorderIcon
-                className={styles["icon"]}
-                onClick={() => addToWishList(props?.items?.uuid)}
-              />
-            </span>
-          ))}
-        <span>
-          <ZoomInIcon className={styles["icon"]} />
-        </span>
-      </div>
       <div className={styles["parent"]}>
         <div className={styles["top"]}>
+          <div className={styles["icons"]}>
+            <span>
+              <ShoppingCartOutlinedIcon
+                className={styles["icon"]}
+                onClick={() => setOpen(true)}
+              />
+            </span>
+            {isAuthed &&
+              (wished ? (
+                <span>
+                  <FavoriteIcon
+                    className={styles["icon"]}
+                    onClick={() => removeFromWishList(wishListUUID)}
+                    style={{ color: "red" }}
+                  />
+                </span>
+              ) : (
+                <span>
+                  <FavoriteBorderIcon
+                    className={styles["icon"]}
+                    onClick={() => addToWishList(props?.items?.uuid)}
+                  />
+                </span>
+              ))}
+            <span>
+              <ZoomInIcon className={styles["icon"]} />
+            </span>
+          </div>
           <img src={props?.items?.images[0]?.file ?? product} alt="" />
           {/* <Zoom
           img={props?.items?.images[0]?.file ?? product}

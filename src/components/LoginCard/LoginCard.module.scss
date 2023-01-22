@@ -39,6 +39,11 @@
   color: #9096b2;
 }
 
+.login-text-forgot-password{
+  @extend .login-text-common;
+  cursor: pointer;
+}
+
 .textfield-box{
     margin-top: 2rem;
     margin-bottom: 2rem;

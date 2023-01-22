@@ -6,12 +6,14 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import styles from "./RelatedProduct.module.scss";
 import StarOutline from "@mui/icons-material/StarOutline";
-import {Box} from "@mui/system";
+import { Box } from "@mui/system";
+import cloth from "../../assets/ProductDetailCard/cloth.png";
+
 const RelatedProductCard = (props) => {
     return (
         <Container>
             <Card sx={{ maxWidth: 345 }}>
-                <CardMedia sx={{ minHeight: 400 }} image={props.item.image} title="green iguana" />
+                <CardMedia sx={{ minHeight: 400 }} image={props?.item?.images[0]?.file ?? cloth} title="green iguana" />
                 <CardContent>
                     <Typography
                         gutterBottom
@@ -19,14 +21,8 @@ const RelatedProductCard = (props) => {
                         component="div"
                         className={styles["product-name"]}
                     >
-                        <span>{props.item.name}</span>{" "}
-                        <Box>
-                            <StarOutline fontSize="sm" className={styles["star-icon"]} />
-                            <StarOutline fontSize="sm" className={styles["star-icon"]} />
-                            <StarOutline fontSize="sm" className={styles["star-icon"]} />
-                            <StarOutline fontSize="sm" className={styles["star-icon"]} />
-                            <StarOutline fontSize="sm" className={styles["star-icon"]} />
-                        </Box>
+                        <span>{props?.item?.name}</span>{" "}
+
                     </Typography>
                     <Typography
                         variant="body2"

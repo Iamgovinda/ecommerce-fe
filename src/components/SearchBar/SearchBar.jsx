@@ -25,8 +25,8 @@ const SearchBar = () => {
   }
   return (
     <div className={styles['parent']}>
-     <Input type="text" disableUnderline={true} className={styles['txt']} onChange={(e)=>setSearchText(e.target.value)}/>
-      <Button className={styles['btn']} onClick={()=>handleClick()}><SearchOutlinedIcon/></Button>
+     <Input type="text" disableUnderline={true} className={styles['txt']} onChange={(e)=>setSearchText(e.target.value)} placeholder='Search Products'/>
+      <Button className={styles['btn']} onClick={()=>handleClick()}><SearchOutlinedIcon sx={{color:'white !important'}}/></Button>
     </div>
   )
 }

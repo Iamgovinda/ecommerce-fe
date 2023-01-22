@@ -12,7 +12,9 @@ import styles from './AboutUsLayer.module.scss';
 import dummy from '../../assets/ClientView/contact.png';
 import { Stack } from '@mui/system';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 const AboutUsLayer = () => {
+    const navigate = useNavigate();
     const offers = [
         {
             'image': firstOfferImage,
@@ -46,7 +48,7 @@ const AboutUsLayer = () => {
                                     Business, History</p>
                                 <p className={styles['text-2']}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis neque ultrices mattis aliquam, malesuada diam est. Malesuada sem tristique amet erat vitae eget dolor lobortis. Accumsan faucibus vitae lobortis quis bibendum quam.</p>
                             </Stack>
-                            <Button className={styles['contact']}>Contact Us</Button>
+                            <Button className={styles['contact']} onClick={()=>navigate('/contact-us')}>Contact Us</Button>
 
                         </Grid>
                     </Grid>

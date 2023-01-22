@@ -134,7 +134,7 @@ const UpperNavBar = () => {
               </div>
             ) : (
 
-              <div className={styles['login']}>
+              <div className={styles['login']} onClick={()=>navigate('/profile')}>
                 <p>{user?.name}</p>
                 <PersonOutlineOutlinedIcon />
                 <LogoutIcon className={styles['logout']} onClick={()=>handleLogout()}/>

@@ -6,6 +6,7 @@
     font-size: 24px !important;
     line-height: 28px;
     color: #151875;
+    padding-bottom: 1rem;
   }
 
   .texts-1:hover {
@@ -16,9 +17,14 @@
   }
 }
 
+.chart {
+  width: 500px;
+}
+
 .parent {
   background-color: #f9f8fe;
   padding: 20px 20px;
+  min-height: 10rem !important;
 }
 
 .texts-2 {
@@ -30,7 +36,34 @@
 
 .mid-top {
   font-family: "Josefin Sans";
-  font-size: 22px;
+  font-size: 18px !important;
   line-height: 26px;
   color: #151875;
+}
+
+.mid-top:active{
+  text-decoration: underline;
+}
+
+
+.description{
+  font-family: "Josefin Sans";
+  font-size: 16px;
+  line-height: 20px;
+  color: #a9acc6;
+}
+
+.active-tab{
+  text-decoration: underline;
+}
+
+.rating-box{
+  display: flex;
+  align-items: center;
+}
+
+.rating-review{
+  color:#a9acc6;
+  font-weight: 700;
+  padding: 5px;
 }

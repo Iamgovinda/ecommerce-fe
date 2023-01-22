@@ -9,7 +9,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import { Box } from "@mui/system";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function LowerNavBar() {
     const [anchorElForPages, setAnchorElForPages] = React.useState(null);
     const open_page = Boolean(anchorElForPages);
@@ -21,6 +21,7 @@ export default function LowerNavBar() {
         setAnchorElForPages(null);
         setPageName(page);
     };
+    const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -29,6 +30,9 @@ export default function LowerNavBar() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const toShopLayer = () => {
+        window.location.replace("/shop-layer")
+    }
     const menuItems = ["Home", "Pages", "Product", "Blog", "Shop", "Contact"];
 
     return (
@@ -78,16 +82,18 @@ export default function LowerNavBar() {
                                 Logout
                             </MenuItem>
                         </Menu>
-                        <p>Pages</p>
-                        <p>Products</p>
-                        <p>Blog</p>
-                        <p>Shop</p>
-
-                        <p>
-                            <Link className={style["contact-txt"]} to={"/contact-us"}>
-                                Contact
-                            </Link>
+                        <p className={style["shop"]} onClick={()=>toShopLayer()}>
+                            Shop
                         </p>
+                        <Link to="/about" className={style["common-menu-txt"]}>
+                            About
+                        </Link>
+                        <Link className={style["contact-txt"]} to={"/contact-us"}>
+                            Contact
+                        </Link>
+                        <Link to="/FAQ" className={style["common-menu-txt"]}>
+                            FAQ
+                        </Link>
                     </div>
                 </div>
                 <div className={style["right"]}>

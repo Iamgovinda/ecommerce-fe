@@ -7,7 +7,6 @@ import FeaturedProductCard from '../../components/ProductCard/FeaturedProductCar
 import product from '../../assets/ProductCard/product.png';
 import Slider from 'react-slick';
 const CustomCarousel = (props) => {
-    console.log(props.children)
     const PrevArrow = (props) => {
         const { style, onClick, btnColor } = props;
 

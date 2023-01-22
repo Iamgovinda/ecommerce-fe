@@ -9,7 +9,7 @@ import impty_order_image from '../../assets/Cart/empty_cart.png';
 const ShoppingCartLayer = () => {
   const [isLoading, SetIsLoading] = useState(true);
   const [orderData, setOrderData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   
   useEffect(() => {
       if (isLoading) {
@@ -19,15 +19,6 @@ const ShoppingCartLayer = () => {
           })
       }
   }, [isLoading, orderData])
-
-  const list_of_price = []
-  const make_list_of_price = orderData.map((item) => {
-      return list_of_price.push(
-          (item?.product?.base_price - item?.product?.discount_price)*item?.quantity
-      )
-  })
-  const sum_of_price = list_of_price.reduce((total, price) => total + price, 0);
-  // console.log(list_of_price, sum_of_price, orderData);
   return (
     <Box>
       <BreadCrumbCard view="shopping cart" />
@@ -39,7 +30,7 @@ const ShoppingCartLayer = () => {
               <CartTable item={orderData} setIsLoading={SetIsLoading}/>
             </Grid>
             <Grid item lg={4}>
-              <CartTotal sum = {sum_of_price}/>
+              <CartTotal sum = {orderData[0]?.total_price} proceed_to_checkout={false}/>
             </Grid>
         </Grid>
           ):(

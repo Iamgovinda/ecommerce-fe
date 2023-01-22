@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import { Box, Container } from "@mui/system";
 import { Typography } from "@mui/material";
 import { Stack, TextField } from "@mui/material";
@@ -12,33 +12,32 @@ import { loginPOST } from "../../API/axios";
 import { setToken } from "../../utils/token";
 import { useNavigate, Link } from "react-router-dom";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import RemoveIcon from '@mui/icons-material/Remove';
+// import RemoveIcon from '@mui/icons-material/Remove';
 import config from "../../config";
 const schema = yup.object().shape({
   username: yup.string().required("Email is a required field"),
   password: yup.string().required("Password is a required field"),
 });
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   boxShadow: 24,
+//   p: 4,
+// };
 
 const LoginModal = (props) => {
   const navigate = useNavigate();
-  const handleOpen = () => props.setOpen(true);
+  // const handleOpen = () => props.setOpen(true);
   const handleClose = () => props.setOpen(false);
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
+    // formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -47,7 +46,6 @@ const LoginModal = (props) => {
     loginPOST("accounts/auth/obtain/", data)
       .then((res) => {
         //Group validation is remaining
-        console.log(res.data);
         setToken({
           name: config.tokenName,
           value: JSON.stringify(res.data.token),
@@ -57,7 +55,6 @@ const LoginModal = (props) => {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err);
         if (err.response.data.code === "UNAUTHED") {
           toast.error(
             "Make sure you are a normal user to login. Please try again!"

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import { Stack } from '@mui/system';
+import { Stack, Container } from '@mui/system';
 import styles from './RegisterCard.module.scss';
-import { Typography, TextField } from '@mui/material';
+import { Typography, TextField, FormHelperText } from '@mui/material';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,23 +11,30 @@ import * as yup from 'yup';
 import { post, registerPOST } from '../../API/axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { Modal } from '@mui/material';
+import { Dialog, Slide } from '@mui/material';
+import OtpInput from 'react-otp-input';
+import otpImage from '../../assets/changePassword/otp.jpg';
+// const style = {
+//   position: 'absolute',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+//   width: 400,
+//   bgcolor: 'white',
+//   border: '2px solid #000',
+//   boxShadow: 24,
+//   p: 4,
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'white',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+// };
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
+const phoneRegExp =
+    /^((\\+[1-9]{1,9}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const RegisterCard = () => {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
-  const [OTP, setOTP] = React.useState();
+  const [otp, setOTP] = React.useState();
   const [email, setEmail] = React.useState();
   const handleClose = () => setOpen(false);
   const schema = yup.object().shape({
@@ -39,7 +46,12 @@ const RegisterCard = () => {
     repeat_password: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match"),
-  });
+    phone_number: yup.string().min(10, "cannot be less than 10 digits").max(10, "cannot be more than 10 digits").matches(phoneRegExp, "Phone number is not valid."),
+    email: yup.string().email("Not valid email").required("Email is a required field"),
+    full_name: yup.string().required("Last Name is a required field"),
+    
+  }
+  );
   const {
     register,
     handleSubmit,
@@ -51,13 +63,12 @@ const RegisterCard = () => {
   const onSubmit = async (data) => {
     setEmail(data['email']);
     registerPOST("accounts/register/", data)
-  
+
       .then((res) => {    //Group validation is remaining
 
         toast.success("Registration Successful");
         setOpen(true);
       }).catch((err) => {
-        console.log(err);
         if (err.response.data.detail) {
           toast.error(err.response.data.detail?.[0]);
         } else if (err.response.data.non_field_errors) {
@@ -67,27 +78,29 @@ const RegisterCard = () => {
         }
       })
   }
-  const handleClickButton = ()=>{
+  const handleClickButton = () => {
     const data = {
       'email': email,
-      'otp': OTP
+      'otp': otp
     }
-    console.log(data);
     post(`/accounts/otp-activate/`, data)
-    .then((response)=>{
-      console.log(response);
-      if (response.status === 200){
-        toast.success('Account Verified SuccessFully');
-        setOpen(false);
-        navigate('/')
-      }
-      else{
-        toast.error(response?.response?.data?.non_field_errors[0])
-      }
-    }).catch((err)=>{
-      console.log(err);
-      toast.error("something went wrong");
-    })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          toast.success('Account Verified SuccessFully');
+          setOpen(false);
+          navigate('/')
+        }
+        else {
+          toast.error(response?.response?.data?.non_field_errors[0])
+        }
+      }).catch((err) => {
+        console.log(err);
+        toast.error("something went wrong");
+      })
+  }
+  const handleOTPChange = (otp) => {
+    setOTP(otp);
   }
   return (
     <>
@@ -99,6 +112,7 @@ const RegisterCard = () => {
             component="form"
             noValidate
             autoComplete="off"
+            TransitionComponent={Transition}
             className={styles['textfield-box']}
             onSubmit={handleSubmit(onSubmit)}
           >
@@ -110,6 +124,7 @@ const RegisterCard = () => {
               placeholder='Full Name'
               {...register('name')}
             />
+            {errors.full_name?.message && <FormHelperText id="component-error-text" sx={{ color: 'red' }}>{errors.full_name?.message}</FormHelperText>}
             <TextField
               fullWidth
               type={'email'}
@@ -118,6 +133,7 @@ const RegisterCard = () => {
               placeholder='Email Address'
               {...register('email')}
             />
+            {errors.email?.message && <FormHelperText id="component-error-text" sx={{ color: 'red' }}>{errors.email?.message}</FormHelperText>}
             <TextField
               fullWidth
               type={'number'}
@@ -126,6 +142,8 @@ const RegisterCard = () => {
               placeholder='Phone Number'
               {...register('phone_number')}
             />
+            {errors.phone_number?.message && <FormHelperText id="component-error-text" sx={{ color: 'red' }}>{errors.phone_number?.message}</FormHelperText>}
+
             <TextField
               fullWidth
               id="outlined-password-input"
@@ -134,6 +152,8 @@ const RegisterCard = () => {
               autoComplete="current-password"
               {...register('password')}
             />
+            {errors.password?.message && <FormHelperText id="component-error-text" sx={{ color: 'red' }}>{errors.password?.message}</FormHelperText>}
+
             <TextField
               fullWidth
               id="outlined-password-input confirm_password"
@@ -142,30 +162,33 @@ const RegisterCard = () => {
               autoComplete="current-password"
               {...register('repeat_password')}
             />
+            {errors.repeat_password?.message && <FormHelperText id="component-error-text" sx={{ color: 'red' }}>{errors.repeat_password?.message}</FormHelperText>}
+
             <Button className={styles['btn-signin']} type="submit">Register</Button>
           </Box>
-          <Modal
+          <Dialog
             open={open}
             onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
+            TransitionComponent={Transition}
+            aria-describedby="alert-dialog-slide-description"
           >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2" style={{ marginBottom: '5px' }}>
-                OTP verification
-              </Typography>
-              <TextField
-                label="OTP"
-                id="outlined-required otp"
-                placeholder='OTP'
-                onChange={(e) => setOTP(e.target.value)}
-                marginTop="5rem"
+            <Typography id="modal-modal-title" variant="h6" component="h2" className={styles['otp-dialog-title']}>
+              OTP verification
+            </Typography>
+            <Container className={styles['dialog-box']}>
+              <img src={otpImage} alt="" className={styles['otp-img']} />
+              <p className={styles['activate-your-account']}>Activate Your Account</p>
+              <OtpInput
+                value={otp}
+                onChange={handleOTPChange}
+                numInputs={6}
+                separator={<span>-</span>}
+                inputStyle={styles['input-style']}
+                containerStyle={styles['container-style']}
               />
-              <Box style={{ marginTop: '1rem' }}>
-                <Button variant='contained' style={{ backgroundColor: '#FB2E86' }} onClick={()=>handleClickButton()}>Verify</Button>
-              </Box>
-            </Box>
-          </Modal>
+              <Button variant='contained' onClick={() => handleClickButton()} className={styles['verify-btn']}>Verify</Button>
+            </Container>
+          </Dialog>
           <Typography className={styles['login-text-common']}>Don’t have an Account? <Link to={'/login'}>login</Link></Typography>
         </Stack>
       </Box>

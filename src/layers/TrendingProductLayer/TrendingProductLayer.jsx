@@ -42,7 +42,7 @@ const TrendingProductLayer = (props) => {
 
     return (
         <Container>
-            <Grid container justifyContent='center' spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            <Grid container justifyContent='flex-start' spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
                         props.item.map((item, index) => {
                             return (

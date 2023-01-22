@@ -86,7 +86,7 @@ const AddToCartModal = (props) => {
                                 <span className={styles['initial-price']}>Rs {productDetail?.base_price - productDetail?.discount_price}</span>  <span className={styles['discounted-price']}>Rs {productDetail?.base_price}</span>
                             </Box>
                             <Typography className={styles['text-common']}>
-                                Color
+                                Descriptions
                             </Typography>
                             <Typography className={styles['text-description']}>
                                 {productDetail?.description}
@@ -95,7 +95,7 @@ const AddToCartModal = (props) => {
                                 <div className={styles['plus']} onClick={()=>addQuantity()}><AddIcon /></div> <p>{quantity}</p> <div className={styles['minus']} onClick={()=>subtractQuantity()}><RemoveIcon /></div>
                             </Box>
                             <Box display={'flex'} alignItems="center" gap={6} style={{ padding: '10px 0 10px 0' }}>
-                                <Button variant='contained' className={styles['add_to_cart']} size='medium' onClick={()=>addToCart(productDetail?.uuid)}>Add to Cart</Button> <FavoriteBorderOutlined fontSize='medium' />
+                                <Button variant='contained' className={styles['add_to_cart']} size='medium' onClick={()=>addToCart(productDetail?.uuid)}>Add to Cart</Button> 
                             </Box>
                             <Typography className={styles['text-common']}>
                                 Categories: <span>{productDetail?.category?.map((item, index) => {

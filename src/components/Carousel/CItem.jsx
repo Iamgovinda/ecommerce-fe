@@ -20,7 +20,7 @@ const Item = (props) => {
                     <p className={styles['top_info']}>Best Furniture For Your Castle...</p>
                     <p className={styles['mid_info']}>New Furniture Collection Trends in 2023</p>
                     <p className={styles['bottom_info']}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus error iure et maiores deleniti est.</p>
-                    <Button className={styles['shop_now_btn']} variant="contained" onClick={()=>navigate('/shop-layer')}>Shop Now</Button>
+                    <Button className={styles['shop_now_btn']} variant="contained" onClick={()=>navigate(`/product-details/${props?.item?.uuid}`)}>Shop Now</Button>
                 </div>
             </div>
                 <div className={styles['right']}>
@@ -29,7 +29,7 @@ const Item = (props) => {
                     <img src={discountBoard} alt="" className={styles['discountBoard']} />
                     <span className={styles['discount']}>
                         {props?.item?.discount_per}%
-                        off
+                        off     
                     </span>
             </div>
         </div>

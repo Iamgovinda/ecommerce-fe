@@ -47,3 +47,33 @@
     color: #19d16f !important;
 
 }
+
+.modal-btn-box{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-btn{
+  background-color: #fb2e86 !important;
+  border-radius: 2px !important;
+  font-family: "Josefin Sans";
+  font-size: 16px !important;
+  color: #ffffff;
+  height: 44px;
+}
+
+.modal-btn:hover, .modal-btn:hover{
+  background-color: #fb2e86 !important;
+  border-radius: 2px !important;
+  font-family: "Josefin Sans";
+  font-size: 16px !important;
+  color: #ffffff;
+  height: 44px;
+}
+
+.modal-title{
+  font-family: "Josefin Sans" !important;
+  font-size: 1.5rem;
+  padding: 0px 0px 8px 0px;
+}

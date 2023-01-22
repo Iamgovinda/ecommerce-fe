@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import React, { useEffect } from 'react';
 import HomeLayer from "../layers/HomeLayer/HomeLayer";
 import MasterLayer from "../layers/MasterLayer";
@@ -16,9 +16,11 @@ import RegisterLayer from "../layers/RegisterLayer/RegisterLayer";
 import { useUserContext } from "../context/UserContext";
 import { get } from "../API/axios";
 import { toast } from "react-toastify";
+import ProfileLayer from "../layers/ProfileLayer/ProfileLayer";
+import OTP from "../components/OTP/OTP";
+import OrderHistoryPage from "../components/OrderHistory/OrderHistoryPage";
 
 const Routers = () => {
-  let {slug} = useParams();
   const { user, setUserData } = useUserContext();
   const isAuthed = localStorage.getItem("token");
 
@@ -48,6 +50,9 @@ const Routers = () => {
         <Route path="/about" element= {<AboutUsLayer />} />
         <Route path="/contact-us" element={<ContactUsLayer />} />
         <Route path="/FAQ" element={<FAQLayer/>}/>
+        <Route path="/profile" element={<ProfileLayer/>}/>
+        <Route path="/verify-otp" element={<OTP/>}/>
+        <Route path="/order-history" element={<OrderHistoryPage/>}/>
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </MasterLayer>

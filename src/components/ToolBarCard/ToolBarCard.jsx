@@ -5,6 +5,9 @@ import WindowIcon from "@mui/icons-material/Window";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 
 const ToolBarCard = (props) => {
+    const handlePerPage = (value) =>{
+        props?.setLimit(value);
+    }
     return (
         <Box
             className={styles["box-parent"]}
@@ -21,7 +24,7 @@ const ToolBarCard = (props) => {
             <Box className={styles["box-right"]}>
                 <Box className="box-1">
                     <span>per page: </span>{" "}
-                    <input type="text" style={{ width: "2.5rem" }} />
+                    <input type="number" style={{ width: "2.5rem" }} onChange={(e)=>handlePerPage(e.target.value)} min={1}/>
                 </Box>
                 <Box className="box-2">
                     <span>Sort By:</span>{" "}
