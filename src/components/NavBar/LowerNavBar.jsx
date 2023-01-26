@@ -30,9 +30,9 @@ export default function LowerNavBar() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    const toShopLayer = () => {
-        window.location.replace("/shop-layer")
-    }
+    // const toShopLayer = () => {
+    //     window.location.replace("/shop-layer")
+    // }
     const menuItems = ["Home", "Pages", "Product", "Blog", "Shop", "Contact"];
 
     return (
@@ -82,9 +82,9 @@ export default function LowerNavBar() {
                                 Logout
                             </MenuItem>
                         </Menu>
-                        <p className={style["shop"]} onClick={()=>toShopLayer()}>
+                        <Link className={style["common-menu-txt"]} to={"/shop-layer"}>
                             Shop
-                        </p>
+                        </Link>
                         <Link to="/about" className={style["common-menu-txt"]}>
                             About
                         </Link>

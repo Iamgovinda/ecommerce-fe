@@ -10,7 +10,7 @@ import styles from "./CartTable.module.scss";
 import ProductView from "./ProductView";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
-import { get, patch, remove } from "../../API/axios";
+import { get, patch, post, remove } from "../../API/axios";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -19,7 +19,8 @@ const CartTable = (props) => {
     // const [quantity, setQuantity] = React.useState();
     // console.log("Propsss: ", props);
     const addQuantity = (uuid, qua, tot_qua) => {
-        const quantity = qua < tot_qua ? qua + 1 : tot_qua;
+        const quantity = (qua) < (tot_qua+qua) ? qua + 1 : qua;
+        console.log(qua)
         patch(`/order/${uuid}/`, { quantity: quantity }).then((response) => {
             if (response.status) {
                 props?.setIsLoading(true);
@@ -59,8 +60,8 @@ const CartTable = (props) => {
     });
 
     const deleteOrder= (uuid)  => {
-        remove(`/order/${uuid}/`).then((response)=>{
-            if(response.status===204){
+        post(`/order/${uuid}/remove-order/`).then((response)=>{
+            if(response.status===201 || response.status==200){
                 toast.success('Order Removed');
                 props?.setIsLoading(true);
             }

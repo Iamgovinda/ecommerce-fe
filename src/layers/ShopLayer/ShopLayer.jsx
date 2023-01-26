@@ -18,44 +18,40 @@ const ShopGridLayer = () => {
     const [productsCount, setProductsCount] = React.useState();
     const [setIsLoading] = React.useState(true);
     const [setIsError] = React.useState(false);
-    const { products } = useProductContext();
+    // const { products } = useProductContext();
     const [limit, setLimit] = useState(10);
     const [offset, setOffset] = useState(0);
     const [page, setPage] = React.useState(1);
+    const [ordering, setOrdering] = React.useState();
 
 
 
     useEffect(() => {
         const filters = {
             limit: limit,
-            offset: offset
+            offset: offset,
+            ordering: ordering
         }
-        if (products === undefined || products?.length === 0) {
-                get(`product`, filters).then((response) => {
-                    setProduct(response.data.results);
-                    setProductsCount(response.data.page.count);
-                    setIsLoading(false);
-                }
-                ).then((error) => {
-                    console.log(error);
-                    setIsError(true);
-                    setIsLoading(false);
-                })
-        }
-        else if (products === false) {
-            setProduct([]);
-        }
-        else {
-            setProduct(products);
-        }
+        console.log("Ordering: ", ordering);
 
-    }, [products, limit, offset])
+        get(`product`, filters).then((response) => {
+            setProduct(response.data.results);
+            setProductsCount(response.data.page.count);
+            setIsLoading(false);
+        }
+        ).then((error) => {
+            console.log(error);
+            setIsError(true);
+            setIsLoading(false);
+        })
+
+    }, [limit, offset, ordering])
 
     const handleChange = (event, value) => {
         setOffset(limit * (value - 1));
         setPage(value)
-      };
-      
+    };
+
     // const shop_grid_data = [
     //     {
     //         "image": shopGridImage,
@@ -130,7 +126,7 @@ const ShopGridLayer = () => {
     //         "final_price": "$26.00"
     //     }
     // ]
-    
+
     return (
         <>
             {
@@ -145,7 +141,7 @@ const ShopGridLayer = () => {
                 )
             }
             <Container>
-                <ToolBarCard setView={setView} count={product.length} setLimit={setLimit} setIsLoading={setIsLoading}/>
+                <ToolBarCard setView={setView} count={product.length} setLimit={setLimit} setIsLoading={setIsLoading} setOrdering={setOrdering} />
                 {
                     (product && product?.length > 0) ? (
                         <>
@@ -171,7 +167,7 @@ const ShopGridLayer = () => {
                                         {
                                             product.map((item, index) => {
                                                 return (
-                                                    <ShopListCard item={item} key={index} />
+                                                    <ShopListCard item={item} key={index} setIsLoading={setIsLoading} />
                                                 )
                                             })
                                         }
@@ -186,7 +182,7 @@ const ShopGridLayer = () => {
                     </>)
                 }
                 <br />
-                <Pagination page={page} count={Math.ceil(productsCount/limit)} variant="outlined" color="secondary" onChange={handleChange} />
+                <Pagination page={page} count={Math.ceil(productsCount / limit)} variant="outlined" color="secondary" onChange={handleChange} />
             </Container>
         </>
     )

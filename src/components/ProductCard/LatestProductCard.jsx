@@ -16,10 +16,12 @@ const LatestProductCard = (props) => {
     // const viewDetails = (uuid) => {
     //     navigate('/product-details/' + uuid);
     // }
-    const [setWished] = React.useState(
+
+    console.log(props?.item?.in_wishlist);
+    const [wished, setWished] = React.useState(
         !props?.item?.in_wishlist ? false : true
     );
-    const [setWishListUUID] = React.useState(
+    const [wishListUUID, setWishListUUID] = React.useState(
         props?.item?.in_wishlist ? props?.item?.in_wishlist : ""
     );
     const isAuthed = localStorage.getItem("token");
@@ -62,11 +64,11 @@ const LatestProductCard = (props) => {
                     />
                 </span>
                 {isAuthed &&
-                    (props?.item?.in_wishlist ? (
+                    (wished ? (
                         <span>
                             <FavoriteIcon
                                 className={styles["icon"]}
-                                onClick={() => removeFromWishList(props?.item?.in_wishlist)}
+                                onClick={() => removeFromWishList(wishListUUID)}
                                 style={{ color: "red" }}
                             />
                         </span>

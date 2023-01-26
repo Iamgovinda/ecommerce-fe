@@ -31,6 +31,7 @@
   font-size: 16px;
   line-height: 19px;
   color: #8a8fb9;
+  cursor: pointer;
 }
 
 .customer-care{
@@ -44,4 +45,9 @@
 }
 .page{
     @extend .catagory;
+    text-decoration: none;
+}
+
+.Chair{
+  cursor: pointer;
 }

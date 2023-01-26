@@ -24,6 +24,7 @@ const style = {
 };
 
 const CartTotal = (props) => {
+    console.log(props);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -42,6 +43,7 @@ const CartTotal = (props) => {
                         toast.success("Payment successfull");
                         navigate('/order-completed')
                     }
+                    console.log(response)
                 })
             },
             // onError handler is optional
@@ -57,16 +59,15 @@ const CartTotal = (props) => {
         },
         "paymentPreference": ["KHALTI", "EBANKING", "MOBILE_BANKING", "CONNECT_IPS", "SCT"],
     };
-    let checkout = new KhaltiCheckout(config);
     const handleClick = () => {
+        let checkout = new KhaltiCheckout(config);
         get(`/order/payment-method/?method=KHALTI`).then((response) => {
             if (response.status === 200) {
-                toast.success('Payment method saved');
                 setOpen(false);
             }
         })
         setOpen(false);
-        checkout.show({ amount: 10000 });
+        checkout.show({ amount: props?.sum*100 });
     }
 
     const cashOnDelivery = (uuid) => {
@@ -74,6 +75,7 @@ const CartTotal = (props) => {
             if (response.status === 200) {
                 toast.success('Thankyou for Submitting Payment method. Please Check Your Email');
                 setOpen(false);
+                navigate('/order-completed')
             }
         })
     }

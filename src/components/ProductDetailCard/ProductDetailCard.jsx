@@ -28,7 +28,7 @@ import LoginModal from "../loginModal/LoginModal";
 const ProductDetailCard = (props) => {
   const [quantity, setQuantity] = React.useState(2);
   const [value, setValue] = React.useState(2);
-  const [productDetail, setProductDetail] = useState();
+  const [productDetail, setProductDetail] = useState(props?.item);
   const [isLoading, setIsLoading] = useState(true);
   const [open, setOpen] = React.useState(false);
   const [wished, setWished] = React.useState();
@@ -49,7 +49,7 @@ const ProductDetailCard = (props) => {
           .then((response) => {
             setProductDetail(response.data);
             props?.setProductDetail(response.data);
-            props?.setIsLoading(true);
+            props?.setIsLoading(!props?.isLoading);
             setValue(response.data.ratings?.rating);
             setWished(response?.data?.in_wishlist);
             setIsLoading(false);
@@ -71,7 +71,7 @@ const ProductDetailCard = (props) => {
         .then((response) => {
           setValue(response.data.ratings);
           setIsLoading(true);
-          props?.setIsLoading(true);
+          props?.setIsLoading(!props?.isLoading);
         })
         .catch((error) => {
           toast.error(error);
@@ -83,7 +83,7 @@ const ProductDetailCard = (props) => {
       )
         .then((response) => {
           setValue(response.data.ratings);
-          props?.setIsLoading(true);
+          props?.setIsLoading(!props?.isLoading);
         })
         .catch((error) => {
           toast.error("Something went wrong");
@@ -249,12 +249,12 @@ const ProductDetailCard = (props) => {
               })}
             </span>
           </Typography>
-          <Box display={"flex"} alignItems="center" gap={2}>
+          {/* <Box display={"flex"} alignItems="center" gap={2}>
             <span className={styles["text-common"]}>Share</span>
             <FacebookIcon fontSize="medium" />{" "}
             <InstagramIcon fontSize="medium" />{" "}
             <TwitterIcon fontSize="medium" />
-          </Box>
+          </Box> */}
         </Grid>
       </Grid>
     </Container>

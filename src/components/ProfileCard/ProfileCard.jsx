@@ -9,9 +9,11 @@ import { removeToken } from "../../utils/token";
 import { toast } from "react-toastify";
 import ProfileEditModal from "./ProfileEditModal";
 import { useNavigate } from "react-router-dom";
+import ChangePasswordModal from "./ChangePasswordModal";
 
 const ProfileCard = (props) => {
   const [open, setOpen] = React.useState(false);
+  const [openChange, setOpenChange] = React.useState(false);
   const navigate = useNavigate();
 
   const handleClickOpen = () => {
@@ -50,10 +52,11 @@ const ProfileCard = (props) => {
             Edit Profile
           </Button>
         </Box>
-        <Box className={styles['change-password']}>
-                    <LockIcon className={styles['icon']} /><span>Change Password</span>
-                </Box>
+        <Box className={styles['change-password']} onClick={()=>setOpenChange(true)}>
+          <LockIcon className={styles['icon']} /><span>Change Password</span>
+        </Box>
         {open && <ProfileEditModal open={open} setOpen={setOpen} user={props?.user} />}
+        {openChange && <ChangePasswordModal otpModalOpen={openChange}  setOpenChange={setOpenChange} />}
         <Box className={styles["logout"]} onClick={() => handleLogout()}>
           <LogoutIcon className={styles["icon"]} />
           <span>Sign Out</span>

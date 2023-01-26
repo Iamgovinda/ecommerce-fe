@@ -3,10 +3,12 @@ import styles from './OrderHistoryCard.module.scss';
 import { Box } from '@mui/system';
 import { Grid } from '@mui/material';
 import { get } from '../../API/axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const OrderHistoryCard = () => {
     const [recentOrders, setRecentOrders] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         get(`/order/recent-orders/`).then((response) => {
@@ -18,7 +20,7 @@ const OrderHistoryCard = () => {
     return (
         <>
             <Box className={styles['profile-info-main']}>
-                <p className={styles['profile-info-title']}>My Order Histories</p>
+                <p className={styles['profile-info-title']} >My Order Histories <span className={styles['text-view-all-orders']} onClick={()=>{navigate('/order-history')}}>View all orders</span></p>
                 <Grid container className={styles['info']} spacing={1}>
                     <Grid item className={styles['info-title']} lg={1}>
                         <p>SN</p>

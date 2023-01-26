@@ -2,24 +2,22 @@ import React from 'react';
 import styles from './TopProductCard.module.scss';
 import product from '../../assets/TopProductCard/top_image.png';
 import { Container } from '@mui/material';
-import { useProductContext } from '../../context/ProductContext';
 import { useNavigate } from 'react-router-dom';
-import { get } from '../../API/axios';
+
 
 const TopProductCard = (props) => {
-  const {setProducts} = useProductContext();
   const navigate = useNavigate();
-  const handleClick = ()=>{
-      get(`/product/?category__title=${props?.items?.title}`).then((response)=>{
-        response.data.results.length>0?setProducts(response.data.results):setProducts(false);
-        navigate('/shop-layer');
-      }).catch((error)=>{
-        console.log("error Occured");
+  const handleClick = (e) => {
+      navigate('/search', {
+        state: {
+          type: "category",
+          text: props?.items?.title
+        }
       })
   }
     return (
         <Container>
-            <div className={styles["main"]} onClick={()=>handleClick()}>
+            <div className={styles["main"]} onClick={(e)=>handleClick(e)}>
                 <div className={styles["top"]}>
                     <img src={product} alt="product" />
                 </div>

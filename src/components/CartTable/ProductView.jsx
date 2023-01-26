@@ -20,7 +20,7 @@ const ProductView = (props) => {
                 
             </Box>
             <Stack>
-                <Typography className={styles['product-name']}>{props.item.name}</Typography>
+                <Typography className={styles['product-name']}>{props.item?.name}</Typography>
                 <Typography className={styles['product-common']}>Company: {props.item?.manufacturer ?? "ABC company"}</Typography>
                 <Typography className={styles['product-common']}>Code: {props.item?.code ?? "hiuwrenjkf2"}</Typography>
             </Stack>

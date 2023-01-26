@@ -56,7 +56,7 @@ const ProductDetailLayer = () => {
         <>
             <BreadCrumbCard view={"Product Detail"} />
             <Stack gap={10}>
-                <ProductDetailCard  setProductDetail={setProductDetail} setIsLoading={setIsLoading}/>
+                <ProductDetailCard  setProductDetail={setProductDetail} setIsLoading={setIsLoading} isLoading={isLoading}/>
                 <ProductDescriptionCard productDetail={productDetail} productRatings={productRatings}/>
                 <Container className={styles['rel-product-container']}>
                     <Grid container spacing={0}>

@@ -12,7 +12,7 @@ import cloth from "../../assets/ProductDetailCard/cloth.png";
 const RelatedProductCard = (props) => {
     return (
         <Container>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 360 }}>
                 <CardMedia sx={{ minHeight: 400 }} image={props?.item?.images[0]?.file ?? cloth} title="green iguana" />
                 <CardContent>
                     <Typography
@@ -29,7 +29,7 @@ const RelatedProductCard = (props) => {
                         color="text.secondary"
                         className={styles["product-price"]}
                     >
-                        {props.item.price}
+                        Rs {props?.item?.base_price-props?.item?.discount_price}
                     </Typography>
                 </CardContent>
             </Card>

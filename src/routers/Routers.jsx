@@ -19,6 +19,8 @@ import { toast } from "react-toastify";
 import ProfileLayer from "../layers/ProfileLayer/ProfileLayer";
 import OTP from "../components/OTP/OTP";
 import OrderHistoryPage from "../components/OrderHistory/OrderHistoryPage";
+import SearchPage from "../layers/SearchPage/SearchPage";
+import WishedProductLayer from "../layers/WishedProductsLayer/WishedProductLayer";
 
 const Routers = () => {
   const { user, setUserData } = useUserContext();
@@ -53,6 +55,8 @@ const Routers = () => {
         <Route path="/profile" element={<ProfileLayer/>}/>
         <Route path="/verify-otp" element={<OTP/>}/>
         <Route path="/order-history" element={<OrderHistoryPage/>}/>
+        <Route path="/search" element={<SearchPage/>}/>
+        <Route path="/my-wishlists" element={<WishedProductLayer/>}/>
         <Route path='*' element={<PageNotFound />} />
       </Routes>
     </MasterLayer>

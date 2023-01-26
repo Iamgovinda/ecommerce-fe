@@ -67,6 +67,12 @@ const ProductDescriptionCard = (props) => {
         <Box className={styles["parent"]}>
             <Container>
                 <Box className={styles["top-texts"]}>
+                <Typography
+                        className={tab === 'additional_info' ? `${styles['active-tab']} ${styles["texts-1"]}` : styles["texts-1"]}
+                        onClick={() => setTab("additional_info")}
+                    >
+                        Reviews & Ratings
+                    </Typography>
                     <Typography
                         className={tab === 'description' ? `${styles['active-tab']} ${styles["texts-1"]}` : styles["texts-1"]}
                         onClick={() => {
@@ -81,12 +87,7 @@ const ProductDescriptionCard = (props) => {
                     >
                         Features
                     </Typography>
-                    <Typography
-                        className={tab === 'additional_info' ? `${styles['active-tab']} ${styles["texts-1"]}` : styles["texts-1"]}
-                        onClick={() => setTab("additional_info")}
-                    >
-                        Additional Info
-                    </Typography>
+
                 </Box>
                 {/* <Box>
                         <Typography className={styles['mid-top']}>Varius tempor.</Typography>
@@ -129,7 +130,7 @@ const ProductDescriptionCard = (props) => {
 
                             <>
                                 <Typography className={styles["mid-top"]}>
-                                    Additional Information
+                                    Reviews & Ratings
                                 </Typography>
                                 <Grid container>
                                     {/* // <>

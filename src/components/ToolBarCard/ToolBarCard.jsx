@@ -8,6 +8,9 @@ const ToolBarCard = (props) => {
     const handlePerPage = (value) =>{
         props?.setLimit(value);
     }
+    const handleChange = (event) => {
+        props?.setOrdering(event.target.value);
+      };
     return (
         <Box
             className={styles["box-parent"]}
@@ -28,9 +31,9 @@ const ToolBarCard = (props) => {
                 </Box>
                 <Box className="box-2">
                     <span>Sort By:</span>{" "}
-                    <select name="" id="">
-                        <option className={styles["sort_by"]} value="name">name</option>
-                        <option className={styles["sort_by"]} value="quantity">quantity</option>
+                    <select name="" id="" onChange={handleChange}>
+                        <option className={styles["sort_by"]} value="title" >name</option>
+                        <option className={styles["sort_by"]} value="quantity" >quantity</option>
                         <option className={styles["sort_by"]} value="base_price">price</option>
                     </select>
                 </Box>
