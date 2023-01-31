@@ -37,7 +37,7 @@ const ProfileCard = (props) => {
         <Box className={styles["top"]}>
           <img
             src={
-              "http://127.0.0.1:8000" + props?.user?.profile_picture ??
+              props?.user?.profile_picture ??
               "https://cdn-icons-png.flaticon.com/512/1946/1946429.png"
             }
             alt="profile"
