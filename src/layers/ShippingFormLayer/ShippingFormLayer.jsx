@@ -8,10 +8,13 @@ import CartTotal from "../../components/CartTable/CartTotal";
 import product from '../../assets/Cart/product.png';
 import { get } from "../../API/axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const ShippingFormLayer = () => {
   const [orderData, setOrderData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [disabled, setDisabled] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(isLoading)
@@ -21,13 +24,13 @@ const ShippingFormLayer = () => {
           setOrderData(response.data.results);
           setDisabled(!response.data.results[0]?.has_previous_shipping_details);
           setIsLoading(false);
+          
         } else {
           toast.error("Couldn't fetch orders");
         }
       });
     }
   }, [isLoading, orderData]);
-  // console.log(orderData[0]?.has_previous_shipping_details);
 
 
   const data = [
@@ -46,6 +49,10 @@ const ShippingFormLayer = () => {
       )
     )
   })
+
+  if(orderData?.length<1){
+    navigate('/');
+  }
 
   // const addShippingDetails = (data) => {
   //   setShippingData(data);

@@ -6,9 +6,6 @@ import styles from "./ProductDetailCard.module.scss";
 // import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import { Typography } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import {get, patch, post, remove } from "../../API/axios";
@@ -24,6 +21,9 @@ import { Rating } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import LoginModal from "../loginModal/LoginModal";
+import ReactImageZoom from 'react-image-zoom';
+import { useCartContext } from "../../context/CartCountContex";
+
 
 const ProductDetailCard = (props) => {
   const [quantity, setQuantity] = React.useState(2);
@@ -35,6 +35,7 @@ const ProductDetailCard = (props) => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const isAuthed = localStorage.getItem("token");
+  const {setCartCountData } = useCartContext();
   const addQuantity = () => {
     quantity < productDetail?.quantity && setQuantity((prev) => prev + 1);
   };
@@ -83,6 +84,7 @@ const ProductDetailCard = (props) => {
       )
         .then((response) => {
           setValue(response.data.ratings);
+          setIsLoading(true);
           props?.setIsLoading(!props?.isLoading);
         })
         .catch((error) => {
@@ -98,7 +100,8 @@ const ProductDetailCard = (props) => {
     post(`/order/`, data).then((response) => {
       if (response?.status === 201 || response?.status === 200) {
         toast.success("Added to cart successfully");
-        navigate("/shopping-cart");
+        setCartCountData(true);
+        navigate("/");
       } else {
         toast.error(
           response?.response?.data?.error[0] ?? "Something went wrong"
@@ -173,6 +176,7 @@ const ProductDetailCard = (props) => {
             <Rating
               name="simple-controlled"
               value={value}
+              readOnly={isAuthed?false:true}
               onChange={(event, newValue) => {
                 setValue(() => updateRating(newValue));
               }}

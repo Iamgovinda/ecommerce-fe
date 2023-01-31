@@ -55,7 +55,7 @@ const OTP = (props) => {
         const submitData = {
             "email": props?.userEmail,
             "password": data.password,
-            "repeat_password": data.repeatPassword,
+            "repeat_password": data.repeat_password,
             "otp": otp
         }
         post(`/accounts/password/reset/confirm/`, submitData).then((response) => {
@@ -64,7 +64,7 @@ const OTP = (props) => {
                 handleClose();
             }
             else {
-                toast.error("Some");
+                toast.error("Some Error occured");
             }
         })
     }

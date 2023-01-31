@@ -67,7 +67,6 @@ const ChangePasswordModal = (props) => {
                 handleClose();
             }
             else {
-                // console.log();
                 if(response?.response?.data?.old_password){
                     toast.error(response?.response?.data?.old_password[0]);
                 }

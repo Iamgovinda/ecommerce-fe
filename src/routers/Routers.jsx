@@ -21,6 +21,7 @@ import OTP from "../components/OTP/OTP";
 import OrderHistoryPage from "../components/OrderHistory/OrderHistoryPage";
 import SearchPage from "../layers/SearchPage/SearchPage";
 import WishedProductLayer from "../layers/WishedProductsLayer/WishedProductLayer";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Routers = () => {
   const { user, setUserData } = useUserContext();
@@ -42,22 +43,24 @@ const Routers = () => {
     <MasterLayer>
       <Routes>
         <Route path="/" element={<HomeLayer />} />
-        <Route path="/shop-layer" element={<ShopGridLayer/>} />
+        <Route path="/shop-layer" element={<ShopGridLayer />} />
         <Route path="/product-details/:slug" element={<ProductDetailLayer />} />
-        <Route path="/shopping-cart" element={<ShoppingCartLayer />} />
-        <Route path="/order-completed" element={<OrderCompleted/>}/>
-        <Route path="/shipping-detail" element={<ShippingFormLayer />}/>
-        <Route path="/login" element= {<LoginLayer />} />
-        <Route path="/register" element= {<RegisterLayer />} />
-        <Route path="/about" element= {<AboutUsLayer />} />
+        <Route path="/shipping-detail" element={<ShippingFormLayer />} />
+        <Route path="/login" element={<LoginLayer />} />
+        <Route path="/register" element={<RegisterLayer />} />
+        <Route path="/about" element={<AboutUsLayer />} />
         <Route path="/contact-us" element={<ContactUsLayer />} />
-        <Route path="/FAQ" element={<FAQLayer/>}/>
-        <Route path="/profile" element={<ProfileLayer/>}/>
-        <Route path="/verify-otp" element={<OTP/>}/>
-        <Route path="/order-history" element={<OrderHistoryPage/>}/>
-        <Route path="/search" element={<SearchPage/>}/>
-        <Route path="/my-wishlists" element={<WishedProductLayer/>}/>
+        <Route path="/FAQ" element={<FAQLayer />} />
+        {/* <Route path="/verify-otp" element={<OTP/>}/> */}
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/my-wishlists" element={<WishedProductLayer />} />
         <Route path='*' element={<PageNotFound />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/shopping-cart" element={<ShoppingCartLayer />} />
+          <Route path="/order-completed" element={<OrderCompleted />} />
+          <Route path="/profile" element={<ProfileLayer />} />
+          <Route path="/order-history" element={<OrderHistoryPage />} />
+        </Route>
       </Routes>
     </MasterLayer>
   )

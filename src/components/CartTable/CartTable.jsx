@@ -15,12 +15,13 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { toast } from "react-toastify";
+import { useCartContext } from "../../context/CartCountContex";
 const CartTable = (props) => {
     // const [quantity, setQuantity] = React.useState();
     // console.log("Propsss: ", props);
+    const {setCartCountData} = useCartContext();
     const addQuantity = (uuid, qua, tot_qua) => {
         const quantity = (qua) < (tot_qua+qua) ? qua + 1 : qua;
-        console.log(qua)
         patch(`/order/${uuid}/`, { quantity: quantity }).then((response) => {
             if (response.status) {
                 props?.setIsLoading(true);
@@ -63,6 +64,7 @@ const CartTable = (props) => {
         post(`/order/${uuid}/remove-order/`).then((response)=>{
             if(response.status===201 || response.status==200){
                 toast.success('Order Removed');
+                setCartCountData(true);
                 props?.setIsLoading(true);
             }
         })
@@ -72,6 +74,7 @@ const CartTable = (props) => {
         get(`/order/clear-order/`).then((response)=>{
             if(response.status===200){
                 toast.success('Cart Cleared');
+                setCartCountData(true);
                 props?.setIsLoading(true);
             }
         })

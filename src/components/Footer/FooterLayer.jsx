@@ -26,7 +26,7 @@ const FooterLayer = () => {
                             <div className="logo">
                                 <img src={logo} alt="logo" />
                             </div>
-                            <SearchBar />
+                            {/* <SearchBar /> */}
                             <div>
                                 <p className={styles['info']}>Contact Info</p>
                                 <p className={styles['info']}>Ekantakuna, Lalitpur</p>
@@ -47,11 +47,9 @@ const FooterLayer = () => {
                         <p className={styles["customer-care"]}>
                             Customer Care
                         </p>
-                        <p className={styles["customer-care-item"]} onClick={()=>navigate('/profile')}>My Account</p>
                         <p className={styles["customer-care-item"]} onClick={()=>navigate('/contact-us')}>Contact</p>
                         <p className={styles["customer-care-item"]} onClick={()=>navigate('/about')}>About</p>
                         <p className={styles["customer-care-item"]} onClick={()=>navigate('/faq')}>FAQ</p>
-                        <p className={styles["customer-care-item"]}>Order Tracking</p>
                     </Grid>
                     <Grid item md={3}>
                         <p className={styles["pages"]}>
@@ -59,9 +57,7 @@ const FooterLayer = () => {
                         </p>
                         <p><Link to={'shop-layer'} className={styles["page"]}>Shop Page</Link></p>
                         <p><Link to={'/order-history'} className={styles["page"]} onClick={()=>navigate('/order-history')}>Orders History</Link></p>
-                        <p><Link to={'/about'} className={styles["page"]}>About</Link></p>
-                        <p><Link to={'/contact'} className={styles["page"]}>Contact</Link></p>
-                        <p><Link to={'/FAQ'} className={styles["page"]}>FAQ</Link></p>
+                        <p className={styles["customer-care-item"]} onClick={()=>navigate('/profile')}>My Account</p>
                     </Grid>
 
                 </Grid>

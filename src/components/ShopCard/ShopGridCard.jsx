@@ -24,7 +24,7 @@ export default function ShopGridCard(props) {
                     <Box className={styles['box-3']}></Box>
                 </Box>
                 <Typography className={styles['text-bottom']}>
-                    <span className={styles['span-1']}>${props?.item?.base_price - props?.item?.discount_price?? 0} </span><span className={styles['span-2']}>${props?.item?.base_price}</span>
+                    <span className={styles['span-1']}>Rs {props?.item?.base_price - props?.item?.discount_price?? 0} </span><span className={styles['span-2']}>Rs {props?.item?.base_price}</span>
                 </Typography>
             </CardContent>
         </Card>

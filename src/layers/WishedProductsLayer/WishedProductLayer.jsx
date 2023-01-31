@@ -1,40 +1,40 @@
 import React, { useEffect } from 'react';
 import BreadCrumbCard from '../../components/BreadCrumbCard/BreadCrumbCard';
-import { Box } from '@mui/material';
 import { Container } from '@mui/system';
 import { useState } from 'react';
 import { get } from '../../API/axios';
-import ProductDetailCard from '../../components/ProductDetailCard/ProductDetailCard';
-import LatestProductCard from '../../components/ProductCard/LatestProductCard';
 import ShopListCard from '../../components/ShopCard/ShopListCard';
+import noWishlistImg from '../../assets/Cart/wishlist-empty.jpg';
 const WishedProductLayer = () => {
   const [wishedProducts, setWishedProducts] = useState([]);
+  const [isLoading , setIsLoading] = useState(true);
   useEffect(()=>{
+    if(isLoading)
     get(`/product/wished-products/`).then((response)=>{
         if(response.status===200){
             setWishedProducts(response.data);
+            setIsLoading(false);
         }
     })
-  }, [])
-  console.log(wishedProducts);
+  }, [isLoading])
   return (
     <>
         <BreadCrumbCard view="My WishLists" />
-        <Container marginTop={4}>
+        <Container style={{marginTop:"10px"}}>
             {
                 (wishedProducts && wishedProducts.length>0)?(
                     <>
                         {
-                            wishedProducts?.map((item)=>{
+                            wishedProducts?.map((item, index)=>{
                                 return (
-                                    <ShopListCard item={item}/>
+                                    <ShopListCard item={item} setIsLoading={setIsLoading} isLoading={isLoading} wishlist={true} key={index}/>
                                 )
                             })
                         }
                     </>
                 ):(
                     <>
-                    No
+                    <img src={noWishlistImg} alt="" />
                     </>
                 )
             }

@@ -5,8 +5,45 @@ import Circle from "../../components/Circle/Circle";
 import { Grid, Button } from "@mui/material";
 import BreadCrumbCard from "../../components/BreadCrumbCard/BreadCrumbCard";
 import contactUsImage from "../../assets/ContactUs/Contact.png";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { post } from '../../API/axios';
+import { toast } from 'react-toastify';
+// import { useNavigate } from 'react-router-dom';
 
+
+
+// const phoneRegExp =
+//     /^((\\+[1-9]{1,9}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 const ContactUsLayer = () => {
+
+    const schema = yup.object().shape({
+        email: yup.string().email("Not valid email").required("Email is a required field"),
+        name: yup.string().required("Last Name is a required field"),
+
+    }
+    );
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmit = async (data) => {
+        // setEmail(data['email']);
+        post(`/contact/`, data).then((response)=>{
+            if(response.status===200 || response.status===201){
+                toast.success("Thanks for contacting us, you'll will be contacted through email")
+            }
+            else{
+                toast.error("Unable to post contact.")
+            }
+        })
+    }
     return (
         <>
             <BreadCrumbCard view="Contact Us" />
@@ -100,8 +137,11 @@ const ContactUsLayer = () => {
                             </Grid>
                         </Grid>
                     </Grid>
+                    <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+
                     <Grid container spacing={0} marginTop={15}>
                         <Grid item lg={6} display='flex' flexDirection={'column'} gap={5}>
+
                             <Box>
                                 <p className={styles["text-1"]}>Get In Touch</p>
                                 <p className={styles["text-common"]}>
@@ -110,43 +150,49 @@ const ContactUsLayer = () => {
                                     vitae lobortis quis bibendum quam.
                                 </p>
                             </Box>
-                            <Grid container spacing={3}>
-                                <Grid item lg={6} sm={12} md={12}>
-                                    <TextField
-                                        fullWidth
-                                        label="Your Name*"
-                                        placeholder=""
-                                    ></TextField>
-                                </Grid>
-                                <Grid item lg={6} sm={12} md={12}>
-                                    <TextField
-                                        fullWidth
-                                        type={"email"}
-                                        label="Your Email*"
-                                        placeholder=""
-                                    ></TextField>
-                                </Grid>
-                            </Grid>
-                            <TextField
-                                fullWidth
-                                label="Subject*"
-                                placeholder=""
-                            ></TextField>
 
-                            <TextField
-                                fullWidth
-                                label="Type Your Message*"
-                                placeholder=""
-                                className={styles['text-field']}
-                            ></TextField>
-                            <Button className={styles['btn']}>
-                                Send Mail
-                            </Button>
+                                <Grid container spacing={3}>
+                                    <Grid item lg={6} sm={12} md={12}>
+                                        <TextField
+                                            fullWidth
+                                            label="Your Name*"
+                                            placeholder=""
+                                            {...register('name')}
+                                        ></TextField>
+                                    </Grid>
+                                    <Grid item lg={6} sm={12} md={12}>
+                                        <TextField
+                                            fullWidth
+                                            type={"email"}
+                                            label="Your Email*"
+                                            placeholder=""
+                                            {...register('email')}
+                                        ></TextField>
+                                    </Grid>
+                                </Grid>
+                                <TextField
+                                    fullWidth
+                                    label="Subject*"
+                                    placeholder=""
+                                    {...register('subject')}
+                                ></TextField>
+
+                                <TextField
+                                    fullWidth
+                                    label="Type Your Message*"
+                                    placeholder=""
+                                    className={styles['text-field']}
+                                    {...register('message')}
+                                ></TextField>
+                                <Button className={styles['btn']} type="submit">
+                                    Submit
+                                </Button>
                         </Grid>
                         <Grid item lg={6}>
-                            <img src={contactUsImage} alt="" className={styles['contact-us-img']}/>
+                            <img src={contactUsImage} alt="" className={styles['contact-us-img']} />
                         </Grid>
                     </Grid>
+                    </form>
                 </Container>
             </Box>
         </>

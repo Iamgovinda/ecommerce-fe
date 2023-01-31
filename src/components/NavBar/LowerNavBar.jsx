@@ -13,13 +13,19 @@ import { Link, useNavigate } from "react-router-dom";
 export default function LowerNavBar() {
     const [anchorElForPages, setAnchorElForPages] = React.useState(null);
     const open_page = Boolean(anchorElForPages);
-    const [pageName, setPageName] = React.useState("Home");
+    const [pageName, setPageName] = React.useState("Category");
     const handleClickForPages = (event) => {
         setAnchorElForPages(event.currentTarget);
     };
     const handleCloseForPages = (page) => {
         setAnchorElForPages(null);
         setPageName(page);
+        navigate('/search', {
+            state: {
+              type: "category",
+              text: page
+            }
+          })
     };
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -68,22 +74,27 @@ export default function LowerNavBar() {
                                 "aria-labelledby": "basic-button",
                             }}
                         >
-                            <MenuItem onClick={() => handleCloseForPages("Shop")}>
-                                <Link to="shop-layer" className={style["common-menu-txt"]}>
-                                    Shop
-                                </Link>
+                            <MenuItem onClick={() => handleCloseForPages("Chair")}>
+                                Chair
                             </MenuItem>
-                            <MenuItem onClick={() => handleCloseForPages("About us")}>
-                                <Link to="about" className={style["common-menu-txt"]}>
-                                    About
-                                </Link>
+                            <MenuItem onClick={() => handleCloseForPages("Sofa")}>
+                                Sofa
                             </MenuItem>
-                            <MenuItem onClick={() => handleCloseForPages("LogOut")}>
-                                Logout
+                            <MenuItem onClick={() => handleCloseForPages("Cabinate")}>
+                                Cabinate
+                            </MenuItem>
+                            <MenuItem onClick={() => handleCloseForPages("Table")}>
+                                Table
+                            </MenuItem>
+                            <MenuItem onClick={() => handleCloseForPages("Bed")}>
+                                Bed
                             </MenuItem>
                         </Menu>
                         <Link className={style["common-menu-txt"]} to={"/shop-layer"}>
                             Shop
+                        </Link>
+                        <Link className={style["common-menu-txt"]} to={"/my-wishlists"}>
+                         Wishlist
                         </Link>
                         <Link to="/about" className={style["common-menu-txt"]}>
                             About

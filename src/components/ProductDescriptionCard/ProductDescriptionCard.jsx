@@ -6,7 +6,7 @@ import styles from "./ProductDescriptionCard.module.scss";
 import { Rating } from "@mui/material";
 import ReactECharts from 'echarts-for-react';
 const ProductDescriptionCard = (props) => {
-    const [tab, setTab] = useState("description");
+    const [tab, setTab] = useState("additional_info");
     const option2 = {
         tooltip: {
             trigger: "item",
@@ -17,7 +17,7 @@ const ProductDescriptionCard = (props) => {
         series: [
             {
                 name: "Product Ratings",
-                color: ["#ABE3EF", "#DEE7FF", "#FFD2AE", "#0320fc", "#8f1180"],
+                color: ["#461bf2", "#7407e8", "#05d9f5", "#05f535", "#f50529"],
                 type: "pie",
                 radius: ["90%", "70%"],
                 avoidLabelOverlap: false,

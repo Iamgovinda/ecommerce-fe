@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import {post} from '../../API/axios';
 import { toast } from 'react-toastify';
 import ReactImageZoom from 'react-image-zoom';
+import { useCartContext } from '../../context/CartCountContex';
 // import { useParams } from 'react-router-dom';
 // import { get, patch, post } from '../../API/axios';
 // import { toast } from 'react-toastify';
@@ -26,6 +27,7 @@ const AddToCartModal = (props) => {
     const handleOpen = () => props.setOpen(true);
     const handleClose = () => props.setOpen(false);
     const navigate = useNavigate()
+    const {setCartCountData} = useCartContext();
 
     const addQuantity = ()=>{
        ( quantity < productDetail?.quantity) && setQuantity(prev => prev + 1);
@@ -42,6 +44,7 @@ const AddToCartModal = (props) => {
         post(`/order/`, data).then((response) => {
             if(response?.status===201 || response?.status===200){
                 toast.success('Added to cart successfully');
+                setCartCountData(true);
                 navigate('/shopping-cart');
             }
             else{
@@ -78,7 +81,7 @@ const AddToCartModal = (props) => {
                             <img src={productDetail?.images[0]?.file ?? mainPDI} alt="mini_pdi" style={{ maxWidth: '22rem' }} />
                             {/* <ReactImageZoom {...stylee}/> */}
                         </Grid>
-                        <Grid item lg={6} display="flex" direction={'column'} justifyContent={'center'}>
+                        <Grid item lg={6} display="flex" style={{flexDirection:'column'}} justifyContent={'center'}>
                             <Box>
                                 <Typography className={styles['text-1']}>{productDetail?.name}</Typography>
                             </Box>

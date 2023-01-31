@@ -4,10 +4,8 @@ import ShopGridCard from "../../components/ShopCard/ShopGridCard";
 import { Grid, Box } from "@mui/material";
 import { Container } from "@mui/material";
 import ToolBarCard from "../../components/ToolBarCard/ToolBarCard";
-// import shopGridImage from "../../assets/Shops/shopImage.png";
 import ShopListCard from "../../components/ShopCard/ShopListCard";
 import { get } from '../../API/axios';
-import { useProductContext } from "../../context/ProductContext";
 import noDataImg from '../../assets/ProductCard/no-product-found.png';
 import Pagination from '@mui/material/Pagination';
 
@@ -32,7 +30,6 @@ const ShopGridLayer = () => {
             offset: offset,
             ordering: ordering
         }
-        console.log("Ordering: ", ordering);
 
         get(`product`, filters).then((response) => {
             setProduct(response.data.results);
@@ -51,82 +48,6 @@ const ShopGridLayer = () => {
         setOffset(limit * (value - 1));
         setPage(value)
     };
-
-    // const shop_grid_data = [
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     },
-    //     {
-    //         "image": shopGridImage,
-    //         "name": "Ultricies condimentum imperdiet",
-    //         "initial_price": "$42.00",
-    //         "final_price": "$26.00"
-    //     }
-    // ]
-
     return (
         <>
             {

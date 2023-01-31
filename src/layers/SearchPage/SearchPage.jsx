@@ -1,8 +1,7 @@
 import React from 'react';
 import BreadCrumbCard from '../../components/BreadCrumbCard/BreadCrumbCard';
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import { Grid } from '@mui/material';
-import { useProductContext } from "../../context/ProductContext";
 import ShopGridCard from '../../components/ShopCard/ShopGridCard';
 import styles from './SearchPage.module.scss';
 import noProductFoundImg from '../../assets/ProductCard/no-product-found.png';
@@ -20,7 +19,6 @@ const SearchPage = () => {
         if(type==="search"){
             get(`/product/?search=${text}`).then((response)=>{
                 if(response.status===200){
-                    console.log(response.data?.results);
                     setProducts(response.data?.results);
                 }
             })

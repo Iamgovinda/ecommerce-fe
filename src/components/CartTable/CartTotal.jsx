@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import KhaltiCheckout from 'khalti-checkout-web';
 import { get, post } from "../../API/axios";
 import { toast } from 'react-toastify';
+import { useCartContext } from '../../context/CartCountContex';
 
 
 const style = {
@@ -24,7 +25,7 @@ const style = {
 };
 
 const CartTotal = (props) => {
-    console.log(props);
+    const {setCartCountData} = useCartContext();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -41,9 +42,9 @@ const CartTotal = (props) => {
                 post(`/order/payment-verification/`, { 'total_price': payload['amount'] / 100, 'token': payload['token'] }).then((response) => {
                     if (response.status === 200) {
                         toast.success("Payment successfull");
+                        setCartCountData(true);
                         navigate('/order-completed')
                     }
-                    console.log(response)
                 })
             },
             // onError handler is optional
@@ -75,6 +76,7 @@ const CartTotal = (props) => {
             if (response.status === 200) {
                 toast.success('Thankyou for Submitting Payment method. Please Check Your Email');
                 setOpen(false);
+                setCartCountData(true);
                 navigate('/order-completed')
             }
         })
@@ -92,7 +94,7 @@ const CartTotal = (props) => {
                 <Box className={styles['stack-confirmation']}>
                     <CheckCircleRoundedIcon className={styles['icon']} fontSize='sm' /><span>Shipping & taxes calculated at checkouts</span>
                 </Box>
-                <Button disabled={(props?.proceed_to_checkout) ? (!(props?.proceed_to_checkout && props?.disabled)) : false} variant={'contained'} className={styles['btn']} onClick={() => (props?.proceed_to_checkout ? (handleOpen()) : (navigate('/shipping-detail')))}>{
+                <Button disabled={(props?.proceed_to_checkout) ? ((props?.proceed_to_checkout && props?.disabled)) : false} variant={'contained'} className={styles['btn']} onClick={() => (props?.proceed_to_checkout ? (handleOpen()) : (navigate('/shipping-detail')))}>{
                     props?.proceed_to_checkout ? ('Proceed To Checkout') : ('Fill Shipping Details')
                 }</Button>
 

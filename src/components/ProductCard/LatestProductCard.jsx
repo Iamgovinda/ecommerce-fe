@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './LatestProductCard.module.scss';
 import latest_product from '../../assets/ProductCard/latest_product.png';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { post, remove } from '../../API/axios';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -12,12 +12,11 @@ import LoginModal from '../loginModal/LoginModal';
 
 const LatestProductCard = (props) => {
     const [open, setOpen] = React.useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const viewDetails = (uuid) => {
     //     navigate('/product-details/' + uuid);
     // }
 
-    console.log(props?.item?.in_wishlist);
     const [wished, setWished] = React.useState(
         !props?.item?.in_wishlist ? false : true
     );
@@ -45,18 +44,10 @@ const LatestProductCard = (props) => {
     };
     return (
         // onClick={() => viewDetails(props?.item?.uuid)}
-        <div className={styles["parent"]} >
+        <div className={styles["parent"]}>
             <div className={styles["top"]}>
-                <img src={props?.item?.images[0]?.file ?? latest_product} alt="latest product" style={{ maxHeight: '11rem', maxWidth: '11rem' }} />
-            </div>
-            <div className={styles["bottom"]}>
-                <p>{props?.item?.name}</p>
-                <div className={styles["bottom_right"]}>
-                    <p className={styles['current']}>{props?.item?.base_price - props?.item?.discount_price}</p>
-                    <p className={styles['initial']}>{props?.item?.base_price}</p>
-                </div>
-            </div>
-            <div className={styles["icons"]}>
+                <img src={props?.item?.images[0]?.file ?? latest_product} alt="latest product" style={{ maxHeight: '11rem', maxWidth: '11rem' }} onClick={()=>navigate(`/product-details/${props?.item?.uuid}`)}/>
+                <div className={styles["icons"]}>
                 <span>
                     <ShoppingCartOutlinedIcon
                         className={styles["icon"]}
@@ -80,10 +71,16 @@ const LatestProductCard = (props) => {
                             />
                         </span>
                     ))}
-                <span>
-                    <ZoomInIcon className={styles["icon"]} />
-                </span>
             </div>
+            </div>
+            <div className={styles["bottom"]}>
+                <p>{props?.item?.name}</p>
+                <div className={styles["bottom_right"]}>
+                    <p className={styles['current']}>Rs {props?.item?.base_price - props?.item?.discount_price}</p>
+                    <p className={styles['initial']}>Rs {props?.item?.base_price}</p>
+                </div>
+            </div>
+        
             {isAuthed ? (
                 <AddToCartModal open={open} setOpen={setOpen} item={props?.item} />
             ) : (

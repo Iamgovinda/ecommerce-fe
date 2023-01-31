@@ -34,8 +34,23 @@
     }
     .wishlist{
       @extend .language;
+      position: relative;
       .shopping_cart{
         cursor: pointer;
+      }
+      .cart_count{
+        height: 1.2rem;
+        width: 1.2rem;
+        border-radius: 50%;
+        background-color: red;
+        display: flex;
+        font-size: 13px;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        // right: 0px;
+        // bottom: 3px;
+        margin: 0 0 1rem 2rem; 
       }
     }
   }

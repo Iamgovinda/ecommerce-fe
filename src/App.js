@@ -1,7 +1,8 @@
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import Routers from "./routers/Routers";
-import ProductContextProvider from "./context/ProductContext";
+// import ProductContextProvider from "./context/ProductContext";
+import CartCountContextProvider from "./context/CartCountContex";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,11 +12,11 @@ function App() {
   return (
     <>
     <UserProvider>
-      <ProductContextProvider>
+      <CartCountContextProvider>
         <BrowserRouter>
           <Routers />
         </BrowserRouter>
-      </ProductContextProvider>
+      </CartCountContextProvider>
     </UserProvider>
 
       <ToastContainer

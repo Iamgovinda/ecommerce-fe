@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "@mui/system";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import styles from "./UpperNavBar.module.scss";
 import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+// import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 // import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -16,9 +16,11 @@ import { useUserContext } from "../../context/UserContext";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { removeToken } from "../../utils/token";
 import { toast } from "react-toastify";
+import { useCartContext } from "../../context/CartCountContex";
+
 // import MenuIcon from '@mui/icons-material/Menu';
 
-const UpperNavBar = () => {
+const UpperNavBar = (props) => {
   const [language, setLanguage] = React.useState('English');
   const [currency, setCurrency] = React.useState('USD');
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,6 +29,9 @@ const UpperNavBar = () => {
   const openForCurrency = Boolean(anchorElForCurrency);
   const { user, setUserData } = useUserContext();
   const isAuthed = localStorage.getItem("token");
+  // const [loading, setLoading] = React.useState(true);
+  const {cart, setCartCountData} = useCartContext();
+  const [cartCount, setCartCount] = useState();
 
   useEffect(() => {
     if (isAuthed && !user) {
@@ -38,6 +43,19 @@ const UpperNavBar = () => {
     }
     //eslint-disable-next-line
   }, [isAuthed, user]);
+
+  useEffect(() => {
+    if (isAuthed && cart) {
+      get(`/order/`)
+        .then((response) => {
+          setCartCount(response.data?.page?.count);
+          setCartCountData(false);
+        })
+        .catch((err) => { });
+    }
+    //eslint-disable-next-line
+  }, [isAuthed, cart]);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -53,8 +71,8 @@ const UpperNavBar = () => {
     setCurrency(currency);
   };
   const navigate = useNavigate();
-  const handleLogout = ()=>{
-    removeToken({name:'token'});
+  const handleLogout = () => {
+    removeToken({ name: 'token' });
     window.location.reload();
     toast.success('Logged out successfully!');
   }
@@ -66,11 +84,11 @@ const UpperNavBar = () => {
         <div className={styles["left"]}>
           <div className={styles["email"]}>
             <EmailOutlinedIcon fontSize="lg" />
-            <p>mhhasanul@gmail.com</p>
+            <p>contact.hecktoapp@gmail.com</p>
           </div>
           <div className={styles["phone"]}>
             <LocalPhoneOutlinedIcon fontSize="lg" color="red" />
-            <p>(12345)67890</p>
+            <p>(+977)9813293156</p>
           </div>
         </div>
 
@@ -134,16 +152,23 @@ const UpperNavBar = () => {
               </div>
             ) : (
 
-              <div className={styles['login']} onClick={()=>navigate('/profile')}>
+              <div className={styles['login']} onClick={() => navigate('/profile')}>
                 <p>{user?.name}</p>
                 <PersonOutlineOutlinedIcon />
-                <LogoutIcon className={styles['logout']} onClick={()=>handleLogout()}/>
+                <LogoutIcon className={styles['logout']} onClick={() => handleLogout()} />
               </div>
 
             )
           }
           <div className={styles['wishlist']}>
-            <ShoppingCartOutlinedIcon style={{ marginLeft: "10px" }} className={styles["shopping_cart"]} onClick={()=>navigate('/shopping-cart')}/>
+            <ShoppingCartOutlinedIcon style={{ marginLeft: "10px" }} className={styles["shopping_cart"]} onClick={() => navigate('/shopping-cart')} />
+            {
+              (isAuthed && cartCount) ? (
+                <div className={styles["cart_count"]}>
+                  {cartCount}
+                </div>
+              ): (<></>)
+            }
           </div>
         </div>
 

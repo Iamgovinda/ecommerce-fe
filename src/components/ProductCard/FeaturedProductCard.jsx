@@ -71,9 +71,9 @@ const FeaturedProductCard = (props) => {
                   />
                 </span>
               ))}
-            <span>
+            {/* <span>
               <ZoomInIcon className={styles["icon"]} />
-            </span>
+            </span> */}
           </div>
           <img src={props?.items?.images[0]?.file ?? product} alt="" />
           {/* <Zoom

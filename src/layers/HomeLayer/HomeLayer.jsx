@@ -67,45 +67,8 @@ const HomeLayer = () => {
   }, [isLoading])
 
 
-//eslint-disable-next-line
-  const latest_products = [
-    {
-      'image': latest_product,
-      'name': 'Comfort Handy Craft',
-      'current_price': '$42',
-      'initial_price': '$65'
-    },
-    {
-      'image': latest_product,
-      'name': 'Comfort Handy Craft',
-      'current_price': '$42',
-      'initial_price': '$65'
-    },
-    {
-      'image': latest_product,
-      'name': 'Comfort Handy Craft',
-      'current_price': '$42',
-      'initial_price': '$65'
-    },
-    {
-      'image': latest_product,
-      'name': 'Comfort Handy Craft',
-      'current_price': '$42',
-      'initial_price': '$65'
-    },
-    {
-      'image': latest_product,
-      'name': 'Comfort Handy Craft',
-      'current_price': '$42',
-      'initial_price': '$65'
-    },
-    {
-      'image': latest_product,
-      'name': 'Comfort Handy Craft',
-      'current_price': '$42',
-      'initial_price': '$65'
-    }
-  ]
+  //eslint-disable-next-line
+
   const offers = [
     {
       'image': firstOfferImage,
@@ -124,7 +87,7 @@ const HomeLayer = () => {
       'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.'
     }
   ]
-//eslint-disable-next-line
+  //eslint-disable-next-line
   const blogs = [
     {
       'image': BlogImage,
@@ -148,7 +111,6 @@ const HomeLayer = () => {
       'description': 'More off this less hello samlande lied much over tightly circa horse taped mightly'
     }
   ]
-
 
   return (
     <>
@@ -182,12 +144,18 @@ const HomeLayer = () => {
       </Container>
 
       {/* <ProductFeatureCard /> */}
-      <div className={styles['trending_product_section']}>
-        <p className={styles['trending_product']}>Trending Products</p>
-        <div>
-          <TrendingProductLayer item={trendingProducts} />
-        </div>
-      </div>
+      {
+        (trendingProducts.length>0) && (
+          <>
+            <div className={styles['trending_product_section']}>
+              <p className={styles['trending_product']}>Trending Products</p>
+              <div>
+                <TrendingProductLayer item={trendingProducts} />
+              </div>
+            </div>
+          </>
+        )
+      }
 
       {/* <div className={styles['trending_product_section']}>
         <p className={styles['trending_product']}>Discount Item</p>

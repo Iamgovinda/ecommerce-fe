@@ -32,7 +32,7 @@ const ShopListCard = (props) => {
             if (response?.status === 200) {
                 setWishListUUID(response.data.uuid);
                 setWished(true);
-                props?.setIsLoading(true);
+                props?.setIsLoading(!props?.isLoading);
             }
         });
     };
@@ -40,7 +40,7 @@ const ShopListCard = (props) => {
         remove(`/wishlist/${product}/`).then((response) => {
             if (response?.status === 204) {
                 setWished(false);
-                props?.setIsLoading(true);
+                props?.setIsLoading(!props?.isLoading);
             }
         });
     };
@@ -76,7 +76,7 @@ const ShopListCard = (props) => {
                     <Box display={"flex"} gap={5}>
                         <Box className={styles['icon-box']}><ShoppingCartIcon onClick={() => setOpen(true)} className={styles['add-to-cart-icon']} /></Box>
                         <Box className={styles['icon-box']}>
-                            {isAuthed &&
+                            {(isAuthed && !props?.wishlist) &&
                                 (wished ? (
                                     <span>
                                         <FavoriteIcon
@@ -95,7 +95,6 @@ const ShopListCard = (props) => {
                                     </span>
                                 ))}
                         </Box>
-                        <Box className={styles['icon-box']}><ZoomInIcon /></Box>
 
                         {isAuthed ? (
                             <AddToCartModal open={open} setOpen={setOpen} item={props?.item} />

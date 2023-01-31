@@ -9,6 +9,7 @@ import { Grid } from '@mui/material';
 import {Container} from '@mui/material';
 import styles from './ProductDetail.module.scss';
 import { get } from '../../API/axios';
+import TrendingProductCard from '../../components/TrendingProductCard/TrendingProductCard';
 
 const ProductDetailLayer = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -64,7 +65,7 @@ const ProductDetailLayer = () => {
                             relatedProducts.map((item, index) => {
                                 return (
                                     <Grid item key={index} sm={6} md={4} lg={3}>
-                                        <RelatedProductCard item={item} />
+                                        <TrendingProductCard item={item} />
                                     </Grid>
                                 )
                             })
