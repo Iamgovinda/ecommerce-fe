@@ -48,7 +48,7 @@ const RegisterCard = () => {
       .oneOf([yup.ref("password"), null], "Passwords must match"),
     phone_number: yup.string().min(10, "cannot be less than 10 digits").max(10, "cannot be more than 10 digits").matches(phoneRegExp, "Phone number is not valid."),
     email: yup.string().email("Not valid email").required("Email is a required field"),
-    full_name: yup.string().required("Full Name is a required field"),
+    name: yup.string().required("Full Name is a required field"),
     
   }
   );
@@ -121,9 +121,9 @@ const RegisterCard = () => {
               label="Full Name"
               id="outlined-required first_name"
               placeholder='Full Name'
-              {...register('full_name')}
+              {...register('name')}
             />
-            {errors.full_name?.message && <FormHelperText id="component-error-text" sx={{ color: 'red' }}>{errors.full_name?.message}</FormHelperText>}
+            {errors.name?.message && <FormHelperText id="component-error-text" sx={{ color: 'red' }}>{errors.name?.message}</FormHelperText>}
             <TextField
               fullWidth
               type={'email'}
