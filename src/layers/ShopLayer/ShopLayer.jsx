@@ -52,13 +52,13 @@ const ShopGridLayer = () => {
         <>
             {
                 view && view === "Grid" && (
-                    <BreadCrumbCard view={"Shop Grid Default"} />
+                    <BreadCrumbCard view={"Shop Grid View"} />
 
                 )
             }
             {
                 view && view === "List" && (
-                    <BreadCrumbCard view={"Shop List Default"} />
+                    <BreadCrumbCard view={"Shop List View"} />
                 )
             }
             <Container>
@@ -97,9 +97,11 @@ const ShopGridLayer = () => {
                             }
                         </>
                     ) : (<>
-                        <Box>
-                            <img src={noDataImg} alt="" />
-                        </Box>
+                        {
+                            (!setIsLoading) && (<Box>
+                                <img src={noDataImg} alt="" />
+                            </Box>)
+                        }
                     </>)
                 }
                 <br />

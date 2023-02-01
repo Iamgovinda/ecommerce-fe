@@ -19,7 +19,7 @@ const TopProductCard = (props) => {
         <Container>
             <div className={styles["main"]} onClick={(e)=>handleClick(e)}>
                 <div className={styles["top"]}>
-                    <img src={product} alt="product" />
+                    <img src={props?.items?.image?.file ?? product} alt="product" className={styles['cat-img']}/>
                 </div>
                 <p className={styles['mid']}>{props?.items?.title}</p>
                 <p className={styles['bottom']}>Available: {props?.items?.products_count}</p>
