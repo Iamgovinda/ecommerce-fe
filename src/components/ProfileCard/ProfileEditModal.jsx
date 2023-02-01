@@ -120,7 +120,7 @@ const ProfileEditModal = (props) => {
                                 <img
                                     src={
                                         (profile) ? URL.createObjectURL(profile) : (
-                                            "http://127.0.0.1:8000" + user?.profile_picture ??
+                                            user?.profile_picture ??
                                             "https://cdn-icons-png.flaticon.com/512/1946/1946429.png"
                                         )
                                     }
